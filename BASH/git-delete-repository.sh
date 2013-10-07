@@ -9,4 +9,4 @@ read -p "Stergi $reponame ?! (y/n)" yn
         [Nn]* ) exit;;
         * ) echo "Raspunde cu y sau n!";;
     esac
-done
+done 
