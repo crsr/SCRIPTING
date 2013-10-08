@@ -75,5 +75,5 @@ use IO::Handle;
 #	After script is finished, call cleaning script
 #
 	#system("perl D:\\WORK\\REPOS\\PERL\\UNART\\cleaning.pl");
-        system("perl /var/perl-scripts/PERL/UNART/filter_process.pl");		
+    #system("perl /var/perl-scripts/PERL/UNART/filter_process.pl");		
 	

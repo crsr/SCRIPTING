@@ -15,8 +15,6 @@
 
 my $start_run = time();
 my $env = 1;
-my $templates_path = "/var/perl-unart/PERL/UNART/templates/";
-
 use strict;
 use warnings;
 use feature qw(say);
@@ -36,12 +34,10 @@ use DBI;
 use Spreadsheet::ParseExcel;
 use Data::Dumper;
 use JSON;
-use Text::CSV;
 sub clean_string($);
 binmode STDOUT, ":utf8";
 my $log_data = strftime("%Y-%m-%d %H-%M-%S", localtime);
 my $log_file_data = strftime("%Y-%m-%d", localtime);
-my $timestamp = strftime("%Y-%m-%d", localtime);
 	#
 	# Log file and structure
 	#
@@ -124,8 +120,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_1_cell_3->Value);
 								my $value4 = clean_string($template_1_cell_4->Value);
 								if(($value1 eq "Data difuzarii") and ($value2 eq "Emisiune") and ($value3 eq "Min.") and ($value4 eq "Sec.")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T1"});
-									system("perl ".$templates_path."t1.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T1"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t1.pl $file");	
 								}
 							}
 							
@@ -141,8 +137,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_2_cell_3->Value);
 								my $value4 = clean_string($template_2_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Denumire opera muzicala") and ($value4 eq "Interpret")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T2"});
-									system("perl ".$templates_path."t2.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T2"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t2.pl $file");	
 								}
 							}
 							
@@ -158,8 +154,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_3_cell_3->Value);
 								my $value4 = clean_string($template_3_cell_4->Value);
 								if(($value1 eq "Emisiune") and ($value2 eq "Titlu") and ($value3 eq "Interpret") and ($value4 eq "Nr.Difuzari")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T3"});
-									system("perl ".$templates_path."t3.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T3"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t3.pl $file");	
 								}
 							}
 							
@@ -175,8 +171,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_4_cell_3->Value);
 								my $value4 = clean_string($template_4_cell_4->Value);
 								if(($value1 eq "Minute") and ($value2 eq "Secunde") and ($value3 eq "Artist") and ($value4 eq "Titlu piesa")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T4"});
-									system("perl ".$templates_path."t4.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T4"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t4.pl $file");	
 								}
 							}
 							
@@ -192,8 +188,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_5_cell_3->Value);
 								my $value4 = clean_string($template_5_cell_4->Value);
 								if(($value1 eq "Emisiune") and ($value2 eq "Titlu piesa") and ($value3 eq "Interpreti") and ($value4 eq "Nr. Difuzari")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T5"});
-									system("perl ".$templates_path."t5.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T5"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t5.pl $file");	
 								}
 							}
 							
@@ -209,8 +205,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_6_cell_3->Value);
 								my $value4 = clean_string($template_6_cell_4->Value);
 								if(($value1 eq "Emisiune") and ($value2 eq "Nr. Dif") and ($value3 eq "Artist") and ($value4 eq "Titlu piesa")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T6"});
-									system("perl ".$templates_path."t6.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T6"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t6.pl $file");	
 								}
 							}
 							
@@ -226,8 +222,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_7_cell_3->Value);
 								my $value4 = clean_string($template_7_cell_4->Value);
 								if(($value1 eq "Emisiune") and ($value2 eq "Min") and ($value3 eq "Sec") and ($value4 eq "Titlu piesa")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T7"});
-									system("perl ".$templates_path."t7.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T7"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t7.pl $file");	
 								}
 							}
 							
@@ -243,8 +239,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_8_cell_3->Value);
 								my $value4 = clean_string($template_8_cell_4->Value);
 								if(($value1 eq "DATA") and ($value2 eq "TITLU") and ($value3 eq "ORCHESTRA") and ($value4 eq "TARA")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T8"});
-									system("perl ".$templates_path."t8.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T8"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t8.pl $file");	
 								}
 							}
 							
@@ -260,8 +256,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_9_cell_3->Value);
 								my $value4 = clean_string($template_9_cell_4->Value);
 								if(($value1 eq "Nr. Crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Minute") and ($value4 eq "Titlu piesa")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T9"});
-									system("perl ".$templates_path."t9.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T9"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t9.pl $file");	
 								}
 							}
 							
@@ -277,8 +273,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_10_cell_3->Value);
 								my $value4 = clean_string($template_10_cell_4->Value);
 								if(($value1 eq "nr crt") and ($value2 eq "data dif") and ($value3 eq "Ora difuzarii") and ($value4 eq "titlu")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T10"});
-									system("perl ".$templates_path."t10.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T10"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t10.pl $file");	
 								}
 							}
 							
@@ -294,8 +290,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_11_cell_3->Value);
 								my $value4 = clean_string($template_11_cell_4->Value);
 								if(($value1 eq "Nr.crt.") and ($value2 eq "DESCRIERE *") and ($value3 eq "CANALUL TV") and ($value4 eq "Data/ORA DIFUZARII")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T11"});
-									system("perl ".$templates_path."t11.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T11"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t11.pl $file");	
 								}
 							}
 							
@@ -311,8 +307,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_12_cell_3->Value);
 								my $value4 = clean_string($template_12_cell_4->Value);
 								if(($value1 eq "Day") and ($value2 eq "Min") and ($value3 eq "Sec") and ($value4 eq "Song")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T12"});
-									system("perl ".$templates_path."t12.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T12"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t12.pl $file");	
 								}
 							}
 							
@@ -328,8 +324,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_13_cell_3->Value);
 								my $value4 = clean_string($template_13_cell_4->Value);
 								if(($value1 eq "Nr.") and ($value2 eq "Minute dufizate") and ($value3 eq "Secunde difuzate") and ($value4 eq "Titlu fonograma")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T13"});
-									system("perl ".$templates_path."t13.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T13"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t13.pl $file");	
 								}
 							}
 							
@@ -345,8 +341,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_14_cell_3->Value);
 								my $value4 = clean_string($template_14_cell_4->Value);
 								if(($value1 eq "ARTIST/A") and ($value2 eq "NUME MELODIE") and ($value3 eq "DURATA") and ($value4 eq "NR DIF")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T14"});
-									system("perl ".$templates_path."t14.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T14"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t14.pl $file");	
 								}
 							}
 							
@@ -362,8 +358,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_15_cell_3->Value);
 								my $value4 = clean_string($template_15_cell_4->Value);
 								if(($value1 eq "Data dif.") and ($value2 eq "Ora difuzare") and ($value3 eq "Min.difuzate") and ($value4 eq "Sec.difuzate")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T15"});
-									system("perl ".$templates_path."t15.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T15"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t15.pl $file");	
 								}
 							}
 							
@@ -379,8 +375,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_16_cell_3->Value);
 								my $value4 = clean_string($template_16_cell_4->Value);
 								if(($value1 eq "DATA DIFUZARII") and ($value2 eq "ORA DIFUZARII") and ($value3 eq "TITLU PIESA") and ($value4 eq "ARTIST")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T6"});
-									system("perl ".$templates_path."t16.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T6"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t16.pl $file");	
 								}
 							}
 							
@@ -396,8 +392,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_17_cell_3->Value);
 								my $value4 = clean_string($template_17_cell_4->Value);
 								if(($value1 eq "Nr. crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Minute difuzate") and ($value4 eq "Titlu fonograma")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T17"});
-									system("perl ".$templates_path."t17.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T17"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t17.pl $file");	
 								}
 							}
 							
@@ -413,8 +409,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_18_cell_3->Value);
 								my $value4 = clean_string($template_18_cell_4->Value);
 								if(($value1 eq "Nr. crt.") and ($value2 eq "Data difuzare") and ($value3 eq "Titlul emisiunii") and ($value4 eq "Titlul piesei")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T18"});
-									system("perl ".$templates_path."t18.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T18"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t18.pl $file");	
 								}
 							}
 							
@@ -430,8 +426,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_19_cell_3->Value);
 								my $value4 = clean_string($template_19_cell_4->Value);
 								if(($value1 eq "Nr. crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Minute difuzate") and ($value4 eq " Secunde difuzate")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T19"});
-									system("perl ".$templates_path."t19.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T19"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t19.pl $file");	
 								}
 							}
 							
@@ -447,27 +443,28 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_20_cell_3->Value);
 								my $value4 = clean_string($template_20_cell_4->Value);
 								if(($value1 eq "DATA") and ($value2 eq "ARTIST") and ($value3 eq "MELODIE") and ($value4 eq "Durata/piesa")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T20"});
-									system("perl ".$templates_path."T22.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T20"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/T22.pl $file");	
 								}
 							}
-					   
-							#TEMPLATE 21 (ok v2)
-							my $template_21_cell_1 = $worksheet->get_cell(2, 1);
-							my $template_21_cell_2 = $worksheet->get_cell(2, 2);
-							my $template_21_cell_3 = $worksheet->get_cell(2, 3);
-							my $template_21_cell_4 = $worksheet->get_cell(2, 4);
+=begin						
+							#TEMPLATE 21
+							my $template_21_cell_1 = $worksheet->get_cell(1, 0);
+							my $template_21_cell_2 = $worksheet->get_cell(1, 2);
+							my $template_21_cell_3 = $worksheet->get_cell(1, 3);
+							my $template_21_cell_4 = $worksheet->get_cell(1, 4);
 							
 							if($template_21_cell_1 and $template_21_cell_2 and $template_21_cell_3 and $template_21_cell_4){
 								my $value1 = clean_string($template_21_cell_1->Value);
 								my $value2 = clean_string($template_21_cell_2->Value);
 								my $value3 = clean_string($template_21_cell_3->Value);
 								my $value4 = clean_string($template_21_cell_4->Value);
-								if(($value1 eq "Data difuzarii") and ($value2 eq "Ora difuzarii") and ($value3 eq "Minute difuzate") and ($value4 eq "Secunde difuzate")){
-									system("perl ".$templates_path."t21.pl $file");	
+								if(($value1 eq "DATA") and ($value2 eq "ARTIST") and ($value3 eq "MELODIE") and ($value4 eq "Min")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t21.pl $file");	
 								}
 							}
-						
+=end COMMENT
+=cut						
 							#TEMPLATE 22 (ok)
 							my $template_22_cell_1 = $worksheet->get_cell(14, 0);
 							my $template_22_cell_2 = $worksheet->get_cell(14, 1);
@@ -480,8 +477,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_22_cell_3->Value);
 								my $value4 = clean_string($template_22_cell_4->Value);
 								if(($value1 eq "Nr. Crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Emisiunea") and ($value4 eq "Titlul Piesei")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T22"});
-									system("perl ".$templates_path."t22.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T22"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t22.pl $file");	
 								}
 							}
 							
@@ -497,8 +494,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_23_cell_3->Value);
 								my $value4 = clean_string($template_23_cell_4->Value);
 								if(($value1 eq "Canal") and ($value2 eq "Data") and ($value3 eq "Ora") and ($value4 eq "Distribuitor")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T23"});
-									system("perl ".$templates_path."t23.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T23"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t23.pl $file");	
 								}
 							}
 						
@@ -514,27 +511,28 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_24_cell_3->Value);
 								my $value4 = clean_string($template_24_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Titlu piesa") and ($value4 eq "nr difuzari + reluari")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T24"});
-									system("perl ".$templates_path."t24.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T24"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t24.pl $file");	
 								}
 							}
-						
-							#TEMPLATE 25 (ok v2)
-							my $template_25_cell_1 = $worksheet->get_cell(8, 2);
-							my $template_25_cell_2 = $worksheet->get_cell(8, 3);
-							my $template_25_cell_3 = $worksheet->get_cell(8, 4);
-							my $template_25_cell_4 = $worksheet->get_cell(8, 5);
+=begin						
+							#TEMPLATE 25
+							my $template_25_cell_1 = $worksheet->get_cell(2, 0);
+							my $template_25_cell_2 = $worksheet->get_cell(2, 1);
+							my $template_25_cell_3 = $worksheet->get_cell(2, 3);
+							my $template_25_cell_4 = $worksheet->get_cell(2, 13);
 							
 							if($template_25_cell_1 and $template_25_cell_2 and $template_25_cell_3 and $template_25_cell_4){
 								my $value1 = clean_string($template_25_cell_1->Value);
 								my $value2 = clean_string($template_25_cell_2->Value);
 								my $value3 = clean_string($template_25_cell_3->Value);
 								my $value4 = clean_string($template_25_cell_4->Value);
-								if(($value1 eq "Nr. crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Ora difuzarii") and ($value4 eq "Spatiu emisie")){
-									system("perl ".$templates_path."t25.pl $file");	
+								if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Titlu piesa") and ($value4 eq "Nr. Difuzari")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t25.pl $file");	
 								}
 							}
-					
+=end COMMENT
+=cut						
 							#TEMPLATE 26 (ok)
 							my $template_26_cell_1 = $worksheet->get_cell(1, 0);
 							my $template_26_cell_2 = $worksheet->get_cell(1, 6);
@@ -547,8 +545,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_26_cell_3->Value);
 								my $value4 = clean_string($template_26_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "Titlul piesei") and ($value3 eq "Autor") and ($value4 eq "Interpret")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T26"});
-									system("perl ".$templates_path."t26.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T26"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t26.pl $file");	
 								}
 							}
 						
@@ -564,71 +562,76 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_27_cell_3->Value);
 								my $value4 = clean_string($template_27_cell_4->Value);
 								if(($value1 eq "ora difuzare") and ($value2 eq "numele filmului") and ($value3 eq "durata") and ($value4 eq "Producator")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T27"});
-									system("perl ".$templates_path."t27.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T27"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t27.pl $file");	
 								}
 							}
-						
-							#TEMPLATE 28 (ok v2)
-							my $template_28_cell_1 = $worksheet->get_cell(1, 1);
-							my $template_28_cell_2 = $worksheet->get_cell(1, 2);
-							my $template_28_cell_3 = $worksheet->get_cell(1, 3);
-							my $template_28_cell_4 = $worksheet->get_cell(1, 4);
+=begin						
+							#TEMPLATE 28
+							my $template_28_cell_1 = $worksheet->get_cell(0, 0);
+							my $template_28_cell_2 = $worksheet->get_cell(0, 2);
+							my $template_28_cell_3 = $worksheet->get_cell(0, 4);
+							my $template_28_cell_4 = $worksheet->get_cell(0, 5);
 							
 							if($template_28_cell_1 and $template_28_cell_2 and $template_28_cell_3 and $template_28_cell_4){
 								my $value1 = clean_string($template_28_cell_1->Value);
 								my $value2 = clean_string($template_28_cell_2->Value);
 								my $value3 = clean_string($template_28_cell_3->Value);
 								my $value4 = clean_string($template_28_cell_4->Value);
-								if(($value1 eq "Data difuzarii") and ($value2 eq "Minute") and ($value3 eq "Secunde") and ($value4 eq "Titlu piesa")){
-									system("perl ".$templates_path."t28.pl $file");	
+								if(($value1 eq "DATA RADIODIFUZARII") and ($value2 eq "CRONOMETRAJ FILM  (SECUNDE)") and ($value3 eq "TITLUL FILMULUI") and ($value4 eq "REGIZOR")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t28.pl $file");	
 								}
 							}
 							
-							#TEMPLATE 29 (ok v2)
-							my $template_29_cell_1 = $worksheet->get_cell(7, 0);
-							my $template_29_cell_2 = $worksheet->get_cell(7, 1);
-							my $template_29_cell_3 = $worksheet->get_cell(7, 2);
-							my $template_29_cell_4 = $worksheet->get_cell(7, 3);
+							#TEMPLATE 29
+							my $template_29_cell_1 = $worksheet->get_cell(0, 0);
+							my $template_29_cell_2 = $worksheet->get_cell(0, 3);
+							my $template_29_cell_3 = $worksheet->get_cell(0, 4);
+							my $template_29_cell_4 = $worksheet->get_cell(0, 7);
 							
 							if($template_29_cell_1 and $template_29_cell_2 and $template_29_cell_3 and $template_29_cell_4){
 								my $value1 = clean_string($template_29_cell_1->Value);
 								my $value2 = clean_string($template_29_cell_2->Value);
 								my $value3 = clean_string($template_29_cell_3->Value);
 								my $value4 = clean_string($template_29_cell_4->Value);
-								if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Sp. Emisie") and ($value4 eq "Titlu piesa")){
-									system("perl ".$templates_path."t29.pl $file");	
+								if(($value1 eq "Data") and ($value2 eq "Durata secunde") and ($value3 eq "Titlu") and ($value4 eq "Regia")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t29.pl $file");	
 								}
 							}
-					
-							#TEMPLATE 30 (ok v2)
+						
+							#TEMPLATE 30
 							my $template_30_cell_1 = $worksheet->get_cell(0, 0);
 							my $template_30_cell_2 = $worksheet->get_cell(0, 1);
 							my $template_30_cell_3 = $worksheet->get_cell(0, 2);
-							my $template_30_cell_4 = $worksheet->get_cell(0, 4);
+							my $template_30_cell_4 = $worksheet->get_cell(0, 3);
 							
 							if($template_30_cell_1 and $template_30_cell_2 and $template_30_cell_3 and $template_30_cell_4){
 								my $value1 = clean_string($template_30_cell_1->Value);
 								my $value2 = clean_string($template_30_cell_2->Value);
 								my $value3 = clean_string($template_30_cell_3->Value);
 								my $value4 = clean_string($template_30_cell_4->Value);
-								if(($value1 eq "Nr.Crt.") and ($value2 eq "Post Radio") and ($value3 eq "Data") and ($value4 eq "Denumirea operei muzicale")){
-									system("perl ".$templates_path."t30.pl $file");	
+								if(($value1 eq "Nr. Crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Minute") and ($value4 eq "Secunde")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t30.pl $file");	
 								}
 							}
 						
-							#TEMPLATE 31 (ok v2)
-							my $template_31_cell_1 = $worksheet->get_cell(0, 1);
-							my $template_31_cell_2 = $worksheet->get_cell(0, 2);
+							#TEMPLATE 31
+							my $template_31_cell_1 = $worksheet->get_cell(0, 0);
+							my $template_31_cell_2 = $worksheet->get_cell(0, 3);
+							my $template_31_cell_3 = $worksheet->get_cell(0, 6);
+							my $template_31_cell_4 = $worksheet->get_cell(0, 8);
 							
-							if($template_31_cell_1 and $template_31_cell_2){
+							if($template_31_cell_1 and $template_31_cell_2 and $template_31_cell_3 and $template_31_cell_4){
 								my $value1 = clean_string($template_31_cell_1->Value);
 								my $value2 = clean_string($template_31_cell_2->Value);
-								if(($value1 eq "") and ($value2 eq "========   Noaptea  ========")){
-									system("perl ".$templates_path."t31.pl $file");	
+								my $value3 = clean_string($template_31_cell_3->Value);
+								my $value4 = clean_string($template_31_cell_4->Value);
+								if(($value1 eq "Data") and ($value2 eq "Durata") and ($value3 eq "Denumire MCS") and ($value4 eq "Regie")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t31.pl $file");	
 								}
 							}
-						
+=end COMMENT
+=cut							
 							#TEMPLATE 32 (ok)
 							my $template_32_cell_1 = $worksheet->get_cell(0, 0);
 							my $template_32_cell_2 = $worksheet->get_cell(0, 5);
@@ -641,8 +644,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_32_cell_3->Value);
 								my $value4 = clean_string($template_32_cell_4->Value);
 								if(($value1 eq "Canal") and ($value2 eq "Durata secunde") and ($value3 eq "Titlu") and ($value4 eq "Regie")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T32"});
-									system("perl ".$templates_path."t32.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T32"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t32.pl $file");	
 								}
 							}
 						
@@ -658,8 +661,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_33_cell_3->Value);
 								my $value4 = clean_string($template_33_cell_4->Value);
 								if(($value1 eq "Nr. crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Titlu piesa") and ($value4 eq "Artist")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T33"});
-									system("perl ".$templates_path."t33.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T33"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t33.pl $file");	
 								}
 							}
 						
@@ -675,8 +678,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_34_cell_3->Value);
 								my $value4 = clean_string($template_34_cell_4->Value);
 								if(($value1 eq "Nr. Crt.") and ($value2 eq "Post Radio") and ($value3 eq "Data") and ($value4 eq "Denumirea operei muzicale")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T34"});
-									system("perl ".$templates_path."t34.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T34"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t34.pl $file");	
 								}
 							}
 						
@@ -692,8 +695,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_35_cell_3->Value);
 								my $value4 = clean_string($template_35_cell_4->Value);
 								if(($value1 eq "ID") and ($value2 eq "date_played") and ($value3 eq "duration") and ($value4 eq "title")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T35"});
-									system("perl ".$templates_path."t35.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T35"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t35.pl $file");	
 								}
 							}
 						
@@ -709,8 +712,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_36_cell_3->Value);
 								my $value4 = clean_string($template_36_cell_4->Value);
 								if(($value1 eq "Emisiune") and ($value2 eq "Titlu") and ($value3 eq "Interpret") and ($value4 eq "Nr difuzari")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T36"});
-									system("perl ".$templates_path."t36.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T36"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t36.pl $file");	
 								}
 							}
 							
@@ -726,8 +729,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_37_cell_3->Value);
 								my $value4 = clean_string($template_37_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Titlu") and ($value4 eq "Interpret")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T37"});
-									system("perl ".$templates_path."t37.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T37"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t37.pl $file");	
 								}
 							}
 						
@@ -743,8 +746,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_38_cell_3->Value);
 								my $value4 = clean_string($template_38_cell_4->Value);
 								if(($value1 eq "DATA DIFUZARII") and ($value2 eq "MINUTE") and ($value3 eq "SECUNDE") and ($value4 eq "TITLU PIESA")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T38"});
-									system("perl ".$templates_path."t38.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T38"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t38.pl $file");	
 								}
 							}
 							
@@ -760,8 +763,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_39_cell_3->Value);
 								my $value4 = clean_string($template_39_cell_4->Value);
 								if(($value1 eq "Nr. crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Minute difuzate") and ($value4 eq "Artist/Interpret")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T39"});
-									system("perl ".$templates_path."t39.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T39"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t39.pl $file");	
 								}
 							}
 						
@@ -777,27 +780,28 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_40_cell_3->Value);
 								my $value4 = clean_string($template_40_cell_4->Value);
 								if(($value1 eq "Nr minute difuzate") and ($value2 eq "Nr secunde difuzate") and ($value3 eq "Titlul piesei") and ($value4 eq "Interpretul / Trupa")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T40"});
-									system("perl ".$templates_path."t40.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T40"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t40.pl $file");	
 								}
 							}
-						
-							#TEMPLATE 41 (ok v2)
-							my $template_41_cell_1 = $worksheet->get_cell(8, 2);
-							my $template_41_cell_2 = $worksheet->get_cell(8, 3);
-							my $template_41_cell_3 = $worksheet->get_cell(8, 4);
-							my $template_41_cell_4 = $worksheet->get_cell(8, 5);
+=begin comment							
+							#TEMPLATE 41
+							my $template_41_cell_1 = $worksheet->get_cell(1, 2);
+							my $template_41_cell_2 = $worksheet->get_cell(1, 3);
+							my $template_41_cell_3 = $worksheet->get_cell(1, 4);
+							my $template_41_cell_4 = $worksheet->get_cell(1, 5);
 							
 							if($template_41_cell_1 and $template_41_cell_2 and $template_41_cell_3 and $template_41_cell_4){
 								my $value1 = clean_string($template_41_cell_1->Value);
 								my $value2 = clean_string($template_41_cell_2->Value);
 								my $value3 = clean_string($template_41_cell_3->Value);
 								my $value4 = clean_string($template_41_cell_4->Value);
-								if(($value1 eq "Interpret") and ($value2 eq "Titlu") and ($value3 eq "Gen piesa") and ($value4 eq "Nr. Difuzari")){
-									system("perl ".$templates_path."t41.pl $file");	
+								if(($value1 eq "Nr minute difuzate") and ($value2 eq "Nr secunde difuzate") and ($value3 eq "Titlul piesei") and ($value4 eq "Interpretul / Trupa")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t41.pl $file");	
 								}
 							}
-					
+=end COMMENT
+=cut						
 							#TEMPLATE 42 (ok)
 							my $template_42_cell_1 = $worksheet->get_cell(0, 1);
 							my $template_42_cell_2 = $worksheet->get_cell(0, 5);
@@ -810,27 +814,28 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_42_cell_3->Value);
 								my $value4 = clean_string($template_42_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "Interpret") and ($value3 eq "Dirijor") and ($value4 eq "Album")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T42"});
-									system("perl ".$templates_path."t42.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T42"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t42.pl $file");	
 								}
 							}
-						
-							#TEMPLATE 43 (ok v2)
-							my $template_43_cell_1 = $worksheet->get_cell(0, 0);
-							my $template_43_cell_2 = $worksheet->get_cell(0, 1);
-							my $template_43_cell_3 = $worksheet->get_cell(0, 2);
-							my $template_43_cell_4 = $worksheet->get_cell(0, 3);
+=begin comment							
+							#TEMPLATE 43
+							my $template_43_cell_1 = $worksheet->get_cell(8, 0);
+							my $template_43_cell_2 = $worksheet->get_cell(8, 1);
+							my $template_43_cell_3 = $worksheet->get_cell(8, 3);
+							my $template_43_cell_4 = $worksheet->get_cell(8, 4);
 							
 							if($template_43_cell_1 and $template_43_cell_2 and $template_43_cell_3 and $template_43_cell_4){
 								my $value1 = clean_string($template_43_cell_1->Value);
 								my $value2 = clean_string($template_43_cell_2->Value);
 								my $value3 = clean_string($template_43_cell_3->Value);
 								my $value4 = clean_string($template_43_cell_4->Value);
-								if(($value1 eq "ID") and ($value2 eq "date_played") and ($value3 eq "song_type") and ($value4 eq "id_subcat")){
-									system("perl ".$templates_path."t43.pl $file");	
+								if(($value1 eq "NR CRT") and ($value2 eq "DATA DIFUZARII") and ($value3 eq "MINUTE") and ($value4 eq "SECUNDE")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t43.pl $file");	
 								}
 							}
-						
+=end COMMENT
+=cut							
 							#TEMPLATE 44 (ok) 
 							my $template_44_cell_1 = $worksheet->get_cell(7, 0);
 							my $template_44_cell_2 = $worksheet->get_cell(7, 1);
@@ -843,27 +848,28 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_44_cell_3->Value);
 								my $value4 = clean_string($template_44_cell_4->Value);
 								if(($value1 eq "") and ($value2 eq "DATA DIFUZARII") and ($value3 eq "MINUTE") and ($value4 eq "SECUNDE")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T44"});
-									system("perl ".$templates_path."t44.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T44"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t44.pl $file");	
 								}
 							}
-							
-							#TEMPLATE 45 (ok v2)
-							my $template_45_cell_1 = $worksheet->get_cell(8, 0);
-							my $template_45_cell_2 = $worksheet->get_cell(8, 1);
-							my $template_45_cell_3 = $worksheet->get_cell(8, 2);
-							my $template_45_cell_4 = $worksheet->get_cell(8, 3);
+=begin comment							
+							#TEMPLATE 45
+							my $template_45_cell_1 = $worksheet->get_cell(0, 0);
+							my $template_45_cell_2 = $worksheet->get_cell(0, 1);
+							my $template_45_cell_3 = $worksheet->get_cell(0, 2);
+							my $template_45_cell_4 = $worksheet->get_cell(0, 7);
 							
 							if($template_45_cell_1 and $template_45_cell_2 and $template_45_cell_3 and $template_45_cell_4){
 								my $value1 = clean_string($template_45_cell_1->Value);
 								my $value2 = clean_string($template_45_cell_2->Value);
 								my $value3 = clean_string($template_45_cell_3->Value);
 								my $value4 = clean_string($template_45_cell_4->Value);
-								if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Ora intrare") and ($value4 eq "Titlu")){
-									system("perl ".$templates_path."t45.pl $file");	
+								if(($value1 eq "DateTime") and ($value2 eq "Artist") and ($value3 eq "Title") and ($value4 eq "PlayCount")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t45.pl $file");	
 								}
 							}
-						 
+=end COMMENT
+=cut							 
 							#TEMPLATE 46 (ok)  
 							my $template_46_cell_1 = $worksheet->get_cell(7, 0);
 							my $template_46_cell_2 = $worksheet->get_cell(7, 1);
@@ -876,8 +882,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_46_cell_3->Value);
 								my $value4 = clean_string($template_46_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "EMISIUNE") and ($value3 eq "Interpret") and ($value4 eq "Titlu")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T46"});
-									system("perl ".$templates_path."t46.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T46"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t46.pl $file");	
 								}
 							}
 							
@@ -893,8 +899,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_47_cell_3->Value);
 								my $value4 = clean_string($template_47_cell_4->Value);
 								if(($value1 eq "DATA DIFUZARE") and ($value2 eq "ORA DIFUZARE") and ($value3 eq "ARTIST") and ($value4 eq "PIESA")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T47"});
-									system("perl ".$templates_path."t47.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T47"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t47.pl $file");	
 								}
 							}
 							
@@ -910,8 +916,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_48_cell_3->Value);
 								my $value4 = clean_string($template_48_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Interpret") and ($value4 eq "Titlu")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T48"});
-									system("perl ".$templates_path."t48.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T48"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t48.pl $file");	
 								}
 							}
 							
@@ -927,8 +933,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_49_cell_3->Value);
 								my $value4 = clean_string($template_49_cell_4->Value);
 								if(($value1 eq "Day") and ($value2 eq "Min") and ($value3 eq "Sec") and ($value4 eq "Song")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T49"});
-									system("perl ".$templates_path."t49.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T49"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t49.pl $file");	
 								}
 							}
 							
@@ -944,8 +950,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_50_cell_3->Value);
 								my $value4 = clean_string($template_50_cell_4->Value);
 								if(($value1 eq "Nume Spot") and ($value2 eq "Voce") and ($value3 eq "Nume artist/compozitor piesa fundal") and ($value4 eq "Timp (s)")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T50"});
-									system("perl ".$templates_path."t50.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T50"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t50.pl $file");	
 								}
 							}
 							
@@ -961,27 +967,28 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_51_cell_3->Value);
 								my $value4 = clean_string($template_51_cell_4->Value);
 								if(($value1 eq "NR. CRT") and ($value2 eq "DATA DIFUZARE") and ($value3 eq "MINUTE") and ($value4 eq "SECUNDE")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T51"});
-									system("perl ".$templates_path."t51.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T51"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t51.pl $file");	
 								}
 							}
-						 
-							#TEMPLATE 52 (ok v2)
-							my $template_52_cell_1 = $worksheet->get_cell(0, 0);
-							my $template_52_cell_2 = $worksheet->get_cell(0, 1);
-							my $template_52_cell_3 = $worksheet->get_cell(0, 2);
-							my $template_52_cell_4 = $worksheet->get_cell(0, 5);
+=begin comment							 
+							#TEMPLATE 52 
+							my $template_52_cell_1 = $worksheet->get_cell(6, 0);
+							my $template_52_cell_2 = $worksheet->get_cell(6, 1);
+							my $template_52_cell_3 = $worksheet->get_cell(6, 2);
+							my $template_52_cell_4 = $worksheet->get_cell(6, 3);
 							
 							if($template_52_cell_1 and $template_52_cell_2 and $template_52_cell_3 and $template_52_cell_4){
 								my $value1 = clean_string($template_52_cell_1->Value);
 								my $value2 = clean_string($template_52_cell_2->Value);
 								my $value3 = clean_string($template_52_cell_3->Value);
 								my $value4 = clean_string($template_52_cell_4->Value);
-								if(($value1 eq "Minute") and ($value2 eq "Secunde") and ($value3 eq "Artist") and ($value4 eq "Numar difuzari")){
-									system("perl ".$templates_path."t52.pl $file");	
+								if(($value1 eq "Data dif.") and ($value2 eq "Ora difuzare") and ($value3 eq "Min.difuzate") and ($value4 eq "Sec.difuzate")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t52.pl $file");	
 								}
 							}
-						
+=end COMMENT
+=cut							
 							#TEMPLATE 53 (ok)
 							my $template_53_cell_1 = $worksheet->get_cell(6, 0);
 							my $template_53_cell_2 = $worksheet->get_cell(6, 1);
@@ -994,8 +1001,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_53_cell_3->Value);
 								my $value4 = clean_string($template_53_cell_4->Value);
 								if(($value1 eq "Nr.crt") and ($value2 eq "Data") and ($value3 eq "Minute") and ($value4 eq "Secunde")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T53"});
-									system("perl ".$templates_path."t53.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T53"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t53.pl $file");	
 								}
 							}
 							
@@ -1011,8 +1018,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_54_cell_3->Value);
 								my $value4 = clean_string($template_54_cell_4->Value);
 								if(($value1 eq "Ziua") and ($value2 eq "Numar Difuzari") and ($value3 eq "Minute") and ($value4 eq "Secunde")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T54"});
-									system("perl ".$templates_path."t54.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T54"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t54.pl $file");	
 								}
 							}
 							
@@ -1028,8 +1035,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_55_cell_3->Value);
 								my $value4 = clean_string($template_55_cell_4->Value);
 								if(($value1 eq "Zi") and ($value2 eq "Luna") and ($value3 eq "An") and ($value4 eq "Ora")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T55"});
-									system("perl ".$templates_path."t55.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T55"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t55.pl $file");	
 								}
 							}
 							
@@ -1045,8 +1052,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_56_cell_3->Value);
 								my $value4 = clean_string($template_56_cell_4->Value);
 								if(($value1 eq "Data difuzarii") and ($value2 eq "Interpret") and ($value3 eq "Titlu piesa") and ($value4 eq "Compozitor")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T56"});
-									system("perl ".$templates_path."t56.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T56"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t56.pl $file");	
 								}
 							}
 							
@@ -1062,91 +1069,92 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_57_cell_3->Value);
 								my $value4 = clean_string($template_57_cell_4->Value);
 								if(($value1 eq "Ziua") and ($value2 eq "Ora") and ($value3 eq "Minute") and ($value4 eq "Secunde")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T57"});
-									system("perl ".$templates_path."t57.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T57"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t57.pl $file");	
 								}
 							}
-							
+=begin comment							
 							#TEMPLATE 58
-							my $template_58_cell_1 = $worksheet->get_cell(0, 3);
-							my $template_58_cell_2 = $worksheet->get_cell(0, 4);
-							my $template_58_cell_3 = $worksheet->get_cell(0, 5);
-							my $template_58_cell_4 = $worksheet->get_cell(0, 6);
+							my $template_58_cell_1 = $worksheet->get_cell(1, 1);
+							my $template_58_cell_2 = $worksheet->get_cell(1, 2);
+							my $template_58_cell_3 = $worksheet->get_cell(1, 3);
+							my $template_58_cell_4 = $worksheet->get_cell(1, 4);
 							
 							if($template_58_cell_1 and $template_58_cell_2 and $template_58_cell_3 and $template_58_cell_4){
 								my $value1 = clean_string($template_58_cell_1->Value);
 								my $value2 = clean_string($template_58_cell_2->Value);
 								my $value3 = clean_string($template_58_cell_3->Value);
 								my $value4 = clean_string($template_58_cell_4->Value);
-								if(($value1 eq "title") and ($value2 eq "artist") and ($value3 eq "Total in secunde") and ($value4 eq "Total minute (intregi)")){
-									system("perl ".$templates_path."t58.pl $file");	
+								if(($value1 eq "Post TV/Radio") and ($value2 eq "Emisiune") and ($value3 eq "Titlu opera muzicala") and ($value4 eq "Durata minute, secunde")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t58.pl $file");	
 								}
 							}
 							
-							#TEMPLATE 59 (ok v2)
-							my $template_59_cell_1 = $worksheet->get_cell(3, 0);
-							my $template_59_cell_2 = $worksheet->get_cell(3, 1);
-							my $template_59_cell_3 = $worksheet->get_cell(3, 2);
-							my $template_59_cell_4 = $worksheet->get_cell(3, 3);
+							#TEMPLATE 59
+							my $template_59_cell_1 = $worksheet->get_cell(13, 0);
+							my $template_59_cell_2 = $worksheet->get_cell(13, 1);
+							my $template_59_cell_3 = $worksheet->get_cell(13, 2);
+							my $template_59_cell_4 = $worksheet->get_cell(13, 3);
 							
 							if($template_59_cell_1 and $template_59_cell_2 and $template_59_cell_3 and $template_59_cell_4){
 								my $value1 = clean_string($template_59_cell_1->Value);
 								my $value2 = clean_string($template_59_cell_2->Value);
 								my $value3 = clean_string($template_59_cell_3->Value);
 								my $value4 = clean_string($template_59_cell_4->Value);
-								if(($value1 eq "Nr. Crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Ora difuzarii") and ($value4 eq "Minute difuzate")){
-									system("perl ".$templates_path."t59.pl $file");	
+								if(($value1 eq "Nr crt") and ($value2 eq "DATA DIFUZARII") and ($value3 eq "ORA DIFUZARII") and ($value4 eq "MINUTE")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t59.pl $file");	
 								}
 							}
 							
-							#TEMPLATE 60 (ok v2)
-							my $template_60_cell_1 = $worksheet->get_cell(4, 0);
-							my $template_60_cell_2 = $worksheet->get_cell(4, 1);
-							my $template_60_cell_3 = $worksheet->get_cell(4, 2);
-							my $template_60_cell_4 = $worksheet->get_cell(4, 3);
+							#TEMPLATE 60
+							my $template_60_cell_1 = $worksheet->get_cell(9, 0);
+							my $template_60_cell_2 = $worksheet->get_cell(9, 1);
+							my $template_60_cell_3 = $worksheet->get_cell(9, 2);
+							my $template_60_cell_4 = $worksheet->get_cell(9, 3);
 							
 							if($template_60_cell_1 and $template_60_cell_2 and $template_60_cell_3 and $template_60_cell_4){
 								my $value1 = clean_string($template_60_cell_1->Value);
 								my $value2 = clean_string($template_60_cell_2->Value);
 								my $value3 = clean_string($template_60_cell_3->Value);
 								my $value4 = clean_string($template_60_cell_4->Value);
-								if(($value1 eq "Nr. Crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Ora difuzarii") and ($value4 eq "Minute difuzate")){
-									system("perl ".$templates_path."t60.pl $file");	
+								if(($value1 eq "Nr") and ($value2 eq "DATA DIFUZARII") and ($value3 eq "ORA DIFUZARII") and ($value4 eq "MINUTE")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t60.pl $file");	
 								}
 							}
-						
-							#TEMPLATE 61 (ok v2)
-							my $template_61_cell_1 = $worksheet->get_cell(17, 0);
-							my $template_61_cell_2 = $worksheet->get_cell(17, 1);
-							my $template_61_cell_3 = $worksheet->get_cell(17, 3);
-							my $template_61_cell_4 = $worksheet->get_cell(17, 4);
+							
+							#TEMPLATE 61
+							my $template_61_cell_1 = $worksheet->get_cell(7, 0);
+							my $template_61_cell_2 = $worksheet->get_cell(7, 1);
+							my $template_61_cell_3 = $worksheet->get_cell(7, 3);
+							my $template_61_cell_4 = $worksheet->get_cell(7, 4);
 							
 							if($template_61_cell_1 and $template_61_cell_2 and $template_61_cell_3 and $template_61_cell_4){
 								my $value1 = clean_string($template_61_cell_1->Value);
 								my $value2 = clean_string($template_61_cell_2->Value);
 								my $value3 = clean_string($template_61_cell_3->Value);
 								my $value4 = clean_string($template_61_cell_4->Value);
-								if(($value1 eq "DATA DIFUZARII") and ($value2 eq "ORA DIFUZARII") and ($value3 eq "MINUTE") and ($value4 eq "SECUNDE")){
-									system("perl ".$templates_path."t61.pl $file");	
+								if(($value1 eq "Nr crt") and ($value2 eq "Data") and ($value3 eq "Min") and ($value4 eq "Sec")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t61.pl $file");	
 								}
 							}
-						
-							#TEMPLATE 62 (ok v2)
-							my $template_62_cell_1 = $worksheet->get_cell(0, 0);
-							my $template_62_cell_2 = $worksheet->get_cell(0, 1);
-							my $template_62_cell_3 = $worksheet->get_cell(0, 2);
-							my $template_62_cell_4 = $worksheet->get_cell(0, 3);
+							
+							#TEMPLATE 62
+							my $template_62_cell_1 = $worksheet->get_cell(8, 0);
+							my $template_62_cell_2 = $worksheet->get_cell(8, 1);
+							my $template_62_cell_3 = $worksheet->get_cell(8, 2);
+							my $template_62_cell_4 = $worksheet->get_cell(8, 3);
 							
 							if($template_62_cell_1 and $template_62_cell_2 and $template_62_cell_3 and $template_62_cell_4){
 								my $value1 = clean_string($template_62_cell_1->Value);
 								my $value2 = clean_string($template_62_cell_2->Value);
 								my $value3 = clean_string($template_62_cell_3->Value);
 								my $value4 = clean_string($template_62_cell_4->Value);
-								if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Spatiu Emisie") and ($value4 eq "Titlu")){
-									system("perl ".$templates_path."t62.pl $file");	
+								if(($value1 eq "Nr crt") and ($value2 eq "Data difuzarii") and ($value3 eq "Ora difuzarii") and ($value4 eq "Minute difuzate")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t62.pl $file");	
 								}
 							}
-					
+=end COMMENT
+=cut							
 							#TEMPLATE 63 (ok)
 							my $template_63_cell_1 = $worksheet->get_cell(5, 0);
 							my $template_63_cell_2 = $worksheet->get_cell(5, 1);
@@ -1159,8 +1167,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_63_cell_3->Value);
 								my $value4 = clean_string($template_63_cell_4->Value);
 								if(($value1 eq "Date") and ($value2 eq "Hour") and ($value3 eq "Minutes") and ($value4 eq "Seconds")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T63"});
-									system("perl ".$templates_path."t63.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T63"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t63.pl $file");	
 								}
 							}
 							
@@ -1176,8 +1184,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_64_cell_3->Value);
 								my $value4 = clean_string($template_64_cell_4->Value);
 								if(($value1 eq "Date") and ($value2 eq "Hour") and ($value3 eq "Minutes") and ($value4 eq "Seconds")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T64"});
-									system("perl ".$templates_path."t64.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T64"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t64.pl $file");	
 								}
 							}
 							
@@ -1193,25 +1201,26 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_65_cell_3->Value);
 								my $value4 = clean_string($template_65_cell_4->Value);
 								if(($value1 eq "Nr Crt") and ($value2 eq "Data Difuzarii") and ($value3 eq "Ora Difuzarii") and ($value4 eq "Secunde Difuzate")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T65"});
-									system("perl ".$templates_path."t65.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T65"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t65.pl $file");	
 								}
 							}
-						
-							#TEMPLATE 66 (ok v2)
-							my $template_66_cell_1 = $worksheet->get_cell(8, 1);
-							my $template_66_cell_2 = $worksheet->get_cell(8, 2);
-							my $template_66_cell_3 = $worksheet->get_cell(8, 3);
+=begin COMMENT							
+							#TEMPLATE 66
+							my $template_66_cell_1 = $worksheet->get_cell(3, 1);
+							my $template_66_cell_2 = $worksheet->get_cell(3, 2);
+							my $template_66_cell_3 = $worksheet->get_cell(3, 3);
 							
 							if($template_66_cell_1 and $template_66_cell_2 and $template_66_cell_3){
 								my $value1 = clean_string($template_66_cell_1->Value);
 								my $value2 = clean_string($template_66_cell_2->Value);
 								my $value3 = clean_string($template_66_cell_3->Value);
-								if(($value1 eq "NR CRT") and ($value2 eq "DATA DIFUZARII") and ($value3 eq "ORA DIFUZARII")){
-									system("perl ".$templates_path."t66.pl $file");	
+								if(($value1 eq "Ziua") and ($value2 eq "Ora Dif.") and ($value3 eq "Titlu Spot")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t66.pl $file");	
 								}
 							}
-						
+=end COMMENT
+=cut							
 							#TEMPLATE 67 (ok)
 							my $template_67_cell_1 = $worksheet->get_cell(0, 0);
 							my $template_67_cell_2 = $worksheet->get_cell(0, 1);
@@ -1224,27 +1233,28 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_67_cell_3->Value);
 								my $value4 = clean_string($template_67_cell_4->Value);
 								if(($value1 eq "NrCrt") and ($value2 eq "DataDifuzarii") and ($value3 eq "OraDifuzarii") and ($value4 eq "MinuteDifuzate")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T67"});
-									system("perl ".$templates_path."t67.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T67"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t67.pl $file");	
 								}
 							}
-							
-							#TEMPLATE 68 (ok v2)
-							my $template_68_cell_1 = $worksheet->get_cell(7, 1);
-							my $template_68_cell_2 = $worksheet->get_cell(7, 2);
-							my $template_68_cell_3 = $worksheet->get_cell(7, 3);
-							my $template_68_cell_4 = $worksheet->get_cell(7, 4);
+=begin COMMENT							
+							#TEMPLATE 68
+							my $template_68_cell_1 = $worksheet->get_cell(1, 0);
+							my $template_68_cell_2 = $worksheet->get_cell(1, 1);
+							my $template_68_cell_3 = $worksheet->get_cell(1, 2);
+							my $template_68_cell_4 = $worksheet->get_cell(1, 3);
 							
 							if($template_68_cell_1 and $template_68_cell_2 and $template_68_cell_3 and $template_68_cell_4){
 								my $value1 = clean_string($template_68_cell_1->Value);
 								my $value2 = clean_string($template_68_cell_2->Value);
 								my $value3 = clean_string($template_68_cell_3->Value);
 								my $value4 = clean_string($template_68_cell_4->Value);
-								if(($value1 eq "Day") and ($value2 eq "Hour") and ($value3 eq "Min") and ($value4 eq "Sec")){
-									system("perl ".$templates_path."t68.pl $file");	
+								if(($value1 eq "Ziua") and ($value2 eq "Ora sau Spatiu orar") and ($value3 eq "Minute") and ($value4 eq "Secunde")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t68.pl $file");	
 								}
 							}
-							
+=end COMMENT
+=cut							
 							#TEMPLATE 69 (ok)
 							my $template_69_cell_1 = $worksheet->get_cell(7, 0);
 							my $template_69_cell_2 = $worksheet->get_cell(7, 1);
@@ -1257,27 +1267,28 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_69_cell_3->Value);
 								my $value4 = clean_string($template_69_cell_4->Value);
 								if(($value1 eq "DATA DIFUZARII") and ($value2 eq "ORA DIFUZARII") and ($value3 eq "MINUTE") and ($value4 eq "SECUNDE")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T69"});
-									system("perl ".$templates_path."t69.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T69"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t69.pl $file");	
 								}
 							}
-						
-							#TEMPLATE 70 (ok v2)
-							my $template_70_cell_1 = $worksheet->get_cell(7, 1);
-							my $template_70_cell_2 = $worksheet->get_cell(7, 2);
-							my $template_70_cell_3 = $worksheet->get_cell(7, 3);
-							my $template_70_cell_4 = $worksheet->get_cell(7, 4);
+=begin COMMENTS							
+							#TEMPLATE 70
+							my $template_70_cell_1 = $worksheet->get_cell(7, 0);
+							my $template_70_cell_2 = $worksheet->get_cell(7, 1);
+							my $template_70_cell_3 = $worksheet->get_cell(7, 2);
+							my $template_70_cell_4 = $worksheet->get_cell(7, 3);
 							
 							if($template_70_cell_1 and $template_70_cell_2 and $template_70_cell_3 and $template_70_cell_4){
 								my $value1 = clean_string($template_70_cell_1->Value);
 								my $value2 = clean_string($template_70_cell_2->Value);
 								my $value3 = clean_string($template_70_cell_3->Value);
 								my $value4 = clean_string($template_70_cell_4->Value);
-								if(($value1 eq "DATA DIFUZARII") and ($value2 eq "ORA DIFUZARII") and ($value3 eq "MINUTE") and ($value4 eq "SECUNDE")){
-									system("perl ".$templates_path."t70.pl $file");	
+								if(($value1 eq "DATA DIFUZARII") and ($value2 eq "POST RADIO") and ($value3 eq "TITLU OPERA MUZICALA") and ($value4 eq "EMISIUNE")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t70.pl $file");	
 								}
 							}
-						
+=end COMMENT
+=cut							
 							#TEMPLATE 71 (ok)
 							my $template_71_cell_1 = $worksheet->get_cell(0, 0);
 							my $template_71_cell_2 = $worksheet->get_cell(0, 1);
@@ -1290,8 +1301,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_71_cell_3->Value);
 								my $value4 = clean_string($template_71_cell_4->Value);
 								if(($value1 eq "DATA") and ($value2 eq "ORA") and ($value3 eq "DURATA") and ($value4 eq "INTERPRET")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T71"});
-									system("perl ".$templates_path."t71.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T71"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t71.pl $file");	
 								}
 							}
 							
@@ -1307,28 +1318,28 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_72_cell_3->Value);
 								my $value4 = clean_string($template_72_cell_4->Value);
 								if(($value1 eq "Day") and ($value2 eq "Min") and ($value3 eq "Sec") and ($value4 eq "Artist")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T72"});
-									system("perl ".$templates_path."t72.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T72"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t72.pl $file");	
 								}
 							}
-						
-							#TEMPLATE 73 (ok v2)
-							my $template_73_cell_1 = $worksheet->get_cell(8, 0);
-							my $template_73_cell_2 = $worksheet->get_cell(8, 1);
-							my $template_73_cell_3 = $worksheet->get_cell(8, 2);
-							my $template_73_cell_4 = $worksheet->get_cell(8, 3);
+=begin COMMENTS							
+							#TEMPLATE 73
+							my $template_73_cell_1 = $worksheet->get_cell(0, 0);
+							my $template_73_cell_2 = $worksheet->get_cell(0, 1);
+							my $template_73_cell_3 = $worksheet->get_cell(0, 2);
+							my $template_73_cell_4 = $worksheet->get_cell(0, 3);
 							
 							if($template_73_cell_1 and $template_73_cell_2 and $template_73_cell_3 and $template_73_cell_4){
 								my $value1 = clean_string($template_73_cell_1->Value);
 								my $value2 = clean_string($template_73_cell_2->Value);
 								my $value3 = clean_string($template_73_cell_3->Value);
 								my $value4 = clean_string($template_73_cell_4->Value);
-								if(($value1 eq "NR CRT") and ($value2 eq "DATA DIFUZARII") and ($value3 eq "ORA DIFUZARII") and ($value4 eq "MINUTE")){
-									system("perl ".$templates_path."t73.pl $file");	
+								if(($value1 eq "nr.crt") and ($value2 eq "firma/campanie") and ($value3 eq "artist/titlu") and ($value4 eq "durata spot")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t73.pl $file");	
 								}
 							}
 							
-							#TEMPLATE 74 (ok v2)
+							#TEMPLATE 74
 							my $template_74_cell_1 = $worksheet->get_cell(0, 0);
 							my $template_74_cell_2 = $worksheet->get_cell(0, 1);
 							my $template_74_cell_3 = $worksheet->get_cell(0, 2);
@@ -1339,12 +1350,12 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value2 = clean_string($template_74_cell_2->Value);
 								my $value3 = clean_string($template_74_cell_3->Value);
 								my $value4 = clean_string($template_74_cell_4->Value);
-								if(($value1 eq "DateTime") and ($value2 eq "Artist") and ($value3 eq "Title") and ($value4 eq "Style")){
-									system("perl ".$templates_path."t74.pl $file");	
+								if(($value1 eq "data") and ($value2 eq "ora") and ($value3 eq "durata") and ($value4 eq "interpret + titlu")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t74.pl $file");	
 								}
 							}
 							
-							#TEMPLATE 75 (ok v2)
+							#TEMPLATE 75
 							my $template_75_cell_1 = $worksheet->get_cell(0, 0);
 							my $template_75_cell_2 = $worksheet->get_cell(0, 1);
 							my $template_75_cell_3 = $worksheet->get_cell(0, 2);
@@ -1355,11 +1366,12 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value2 = clean_string($template_75_cell_2->Value);
 								my $value3 = clean_string($template_75_cell_3->Value);
 								my $value4 = clean_string($template_75_cell_4->Value);
-								if(($value1 eq "Artist") and ($value2 eq "Title") and ($value3 eq "Composers") and ($value4 eq "Publisher")){
-									system("perl ".$templates_path."t75.pl $file");	
+								if(($value1 eq "Num") and ($value2 eq "Vox1") and ($value3 eq "Vox2") and ($value4 eq "Id")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t75.pl $file");	
 								}
 							}
-						
+=end COMMENT
+=cut							
 							#TEMPLATE 76 (ok)
 							my $template_76_cell_1 = $worksheet->get_cell(10, 0);
 							my $template_76_cell_2 = $worksheet->get_cell(10, 1);
@@ -1372,8 +1384,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_76_cell_3->Value);
 								my $value4 = clean_string($template_76_cell_4->Value);
 								if(($value1 eq "Nr crt.") and ($value2 eq "Data") and ($value3 eq "Spatiu emisie") and ($value4 eq "Minute")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T76"});
-									system("perl ".$templates_path."t76.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T76"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t76.pl $file");	
 								}
 							}
 							
@@ -1389,8 +1401,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_77_cell_3->Value);
 								my $value4 = clean_string($template_77_cell_4->Value);
 								if(($value1 eq "Data Difuzare") and ($value2 eq "Ora Difuzare") and ($value3 eq "Minute Difuzate") and ($value4 eq "Secunde Difuzate")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T77"});
-									system("perl ".$templates_path."t77.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T77"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t77.pl $file");	
 								}
 							}
 							
@@ -1406,8 +1418,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_78_cell_3->Value);
 								my $value4 = clean_string($template_78_cell_4->Value);
 								if(($value1 eq "Data Difuzare") and ($value2 eq "Ora Difuzare") and ($value3 eq "Minute Difuzate") and ($value4 eq "Sec. Dif.")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T78"});
-									system("perl ".$templates_path."t78.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T78"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t78.pl $file");	
 								}
 							}
 							
@@ -1423,8 +1435,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_79_cell_3->Value);
 								my $value4 = clean_string($template_79_cell_4->Value);
 								if(($value1 eq "TITLU") and ($value2 eq "COMPOZITOR / TEXTIER") and ($value3 eq "ARTIST") and ($value4 eq "LABEL")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T79"});
-									system("perl ".$templates_path."t79.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T79"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t79.pl $file");	
 								}
 							}
 							
@@ -1440,8 +1452,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_80_cell_3->Value);
 								my $value4 = clean_string($template_80_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Interpret") and ($value4 eq "Titlu")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T80"});
-									system("perl ".$templates_path."t80.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T80"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t80.pl $file");	
 								}
 							}
 							
@@ -1457,8 +1469,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_81_cell_3->Value);
 								my $value4 = clean_string($template_81_cell_4->Value);
 								if(($value1 eq "Data difuzarii") and ($value2 eq "Ora difuzarii") and ($value3 eq "Minute difuzate") and ($value4 eq "Secunde difuzate")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T81"});
-									system("perl ".$templates_path."t81.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T81"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t81.pl $file");	
 								}
 							}
 							
@@ -1474,8 +1486,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_82_cell_3->Value);
 								my $value4 = clean_string($template_82_cell_4->Value);
 								if(($value1 eq "No") and ($value2 eq "Data") and ($value3 eq "Durata difuzarii (sec)") and ($value4 eq "title")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T82"});
-									system("perl ".$templates_path."t82.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T82"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t82.pl $file");	
 								}
 							}
 							
@@ -1491,12 +1503,12 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_83_cell_3->Value);
 								my $value4 = clean_string($template_83_cell_4->Value);
 								if(($value1 eq "No") and ($value2 eq "Data") and ($value3 eq "Durata") and ($value4 eq "Title")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T83"});
-									system("perl ".$templates_path."t83.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T83"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t83.pl $file");	
 								}
 							}
-						
-							#TEMPLATE 84 (ok v2)
+=begin COMMENTS							
+							#TEMPLATE 84
 							my $template_84_cell_1 = $worksheet->get_cell(1, 0);
 							my $template_84_cell_2 = $worksheet->get_cell(1, 1);
 							my $template_84_cell_3 = $worksheet->get_cell(1, 2);
@@ -1507,11 +1519,13 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value2 = clean_string($template_84_cell_2->Value);
 								my $value3 = clean_string($template_84_cell_3->Value);
 								my $value4 = clean_string($template_84_cell_4->Value);
-								if(($value1 eq "DATA DIFUZARE") and ($value2 eq "ORA DIFUZARE") and ($value3 eq "ARTIST") and ($value4 eq "PIESA")){
-									system("perl ".$templates_path."t84.pl $file");	
+								if(($value1 eq "Titlu") and ($value2 eq "Minute") and ($value3 eq "Secunde") and ($value4 eq "Difuzari")){
+									system("perl /var/perl-scripts/PERL/UNART/templates/t84.pl $file");	
 								}
 							}
-						
+=end COMMENT
+=end COMMENT
+=cut							
 							#TEMPLATE 85 (ok)
 							my $template_85_cell_1 = $worksheet->get_cell(0, 0);
 							my $template_85_cell_2 = $worksheet->get_cell(0, 1);
@@ -1524,8 +1538,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_85_cell_3->Value);
 								my $value4 = clean_string($template_85_cell_4->Value);
 								if(($value1 eq "Artist / Grup") and ($value2 eq "Melodie") and ($value3 eq "tara") and ($value4 eq "Min.")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T85"});
-									system("perl ".$templates_path."t85.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T85"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t85.pl $file");	
 								}
 							}
 =begin COMMENTS							
@@ -1541,7 +1555,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_86_cell_3->Value);
 								my $value4 = clean_string($template_86_cell_4->Value);
 								if(($value1 eq "NR. CRT.") and ($value2 eq "DATA DIFUZARII") and ($value3 eq "ORA DIFUZARII") and ($value4 eq "MINUTE")){
-									system("perl ".$templates_path."t86.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t86.pl $file");	
 								}
 							}
 =end COMMENT
@@ -1558,8 +1572,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_87_cell_3->Value);
 								my $value4 = clean_string($template_87_cell_4->Value);
 								if(($value1 eq "Nr. Crt.") and ($value2 eq "Emisiune") and ($value3 eq "Spatiu emisie") and ($value4 eq "Titlu")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T87"});
-									system("perl ".$templates_path."t87.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T87"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t87.pl $file");	
 								}
 							}
 =begin COMMENTS							
@@ -1575,7 +1589,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_88_cell_3->Value);
 								my $value4 = clean_string($template_88_cell_4->Value);
 								if(($value1 eq "DATA DIFUZARII") and ($value2 eq "NUMELE EMISIUNII") and ($value3 eq "ORA DIFUZARII") and ($value4 eq "MINUTE DIFUZATE")){
-									system("perl ".$templates_path."t88.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t88.pl $file");	
 								}
 							}
 							
@@ -1591,7 +1605,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_89_cell_3->Value);
 								my $value4 = clean_string($template_89_cell_4->Value);
 								if(($value1 eq "Nr crt") and ($value2 eq "Data difuzarii") and ($value3 eq "Ora difuzarii") and ($value4 eq "Minute difuzate")){
-									system("perl ".$templates_path."t89.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t89.pl $file");	
 								}
 							}
 							
@@ -1607,7 +1621,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_90_cell_3->Value);
 								my $value4 = clean_string($template_90_cell_4->Value);
 								if(($value1 eq "MELODIE - INTERPRET") and ($value2 eq "DURATA") and ($value3 eq "NR. DIFUZARI") and ($value4 eq "MINUTAJ")){
-									system("perl ".$templates_path."t90.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t90.pl $file");	
 								}
 							}
 							
@@ -1623,7 +1637,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_91_cell_3->Value);
 								my $value4 = clean_string($template_91_cell_4->Value);
 								if(($value1 eq "Nr. Crt.") and ($value2 eq "Per difuzarii") and ($value3 eq "Titlul melodiei") and ($value4 eq "Cantaret")){
-									system("perl ".$templates_path."t91.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t91.pl $file");	
 								}
 							}
 =end COMMENTS
@@ -1640,8 +1654,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_92_cell_3->Value);
 								my $value4 = clean_string($template_92_cell_4->Value);
 								if(($value1 eq "Data difuzarii") and ($value2 eq "Ora difuzarii") and ($value3 eq "Min.") and ($value4 eq "Sec.")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T92"});
-									system("perl ".$templates_path."t92.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T92"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t92.pl $file");	
 								}
 							}
 =begin COMMENTS							
@@ -1657,7 +1671,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_93_cell_3->Value);
 								my $value4 = clean_string($template_93_cell_4->Value);
 								if(($value1 eq "Nr. Crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Ora difuzarii") and ($value4 eq "Minute difuzate")){
-									system("perl ".$templates_path."t93.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t93.pl $file");	
 								}
 							}
 =end COMMENTS
@@ -1674,8 +1688,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_94_cell_3->Value);
 								my $value4 = clean_string($template_94_cell_4->Value);
 								if(($value1 eq "Ziua") and ($value2 eq "Spatiu orar") and ($value3 eq "Min.") and ($value4 eq "Sec.")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T94"});
-									system("perl ".$templates_path."t94.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T94"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t94.pl $file");	
 								}
 							}
 =begin COMMENTS							
@@ -1691,7 +1705,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_95_cell_3->Value);
 								my $value4 = clean_string($template_95_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "Interval orar") and ($value3 eq "Emisiune") and ($value4 eq "Interpret")){
-									system("perl ".$templates_path."t95.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t95.pl $file");	
 								}
 							}
 =end COMMENTS
@@ -1708,8 +1722,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_96_cell_3->Value);
 								my $value4 = clean_string($template_96_cell_4->Value);
 								if(($value1 eq "Nr.crt.") and ($value2 eq "Data radiodifuzarii") and ($value3 eq "Ora") and ($value4 eq "Durata film (Secunde)")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T96"});
-									system("perl ".$templates_path."t96.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T96"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t96.pl $file");	
 								}
 							}
 							
@@ -1725,8 +1739,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_97_cell_3->Value);
 								my $value4 = clean_string($template_97_cell_4->Value);
 								if(($value1 eq "Nr.crt.") and ($value2 eq "Data radiodifuzarii") and ($value3 eq "Ora") and ($value4 eq "Durata film (Secunde)")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T97"});
-									system("perl ".$templates_path."t97.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T97"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t97.pl $file");	
 								}
 							}
 							
@@ -1742,8 +1756,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_98_cell_3->Value);
 								my $value4 = clean_string($template_98_cell_4->Value);
 								if(($value1 eq "Nr.crt.") and ($value2 eq "Data radiodifuzarii") and ($value3 eq "Ora") and ($value4 eq "Durata film (Secunde)")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T98"});
-									system("perl ".$templates_path."t98.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T98"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t98.pl $file");	
 								}
 							}
 							 
@@ -1759,8 +1773,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_99_cell_3->Value);
 								my $value4 = clean_string($template_99_cell_4->Value);
 								if(($value1 eq "Nr.crt.") and ($value2 eq "Data radiodifuzarii") and ($value3 eq "Ora") and ($value4 eq "Durata film (Secunde)")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T99"});
-									system("perl ".$templates_path."t99.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T99"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t99.pl $file");	
 								}
 							}
 							
@@ -1776,8 +1790,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_100_cell_3->Value);
 								my $value4 = clean_string($template_100_cell_4->Value);
 								if(($value1 eq "Ziua") and ($value2 eq "Ora") and ($value3 eq "Minute") and ($value4 eq "Secunde")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T100"});
-									system("perl ".$templates_path."t100.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T100"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t100.pl $file");	
 								}
 							}
 							
@@ -1793,8 +1807,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_101_cell_3->Value);
 								my $value4 = clean_string($template_101_cell_4->Value);
 								if(($value1 eq "Day") and ($value2 eq "Hour") and ($value3 eq "Min") and ($value4 eq "Sec")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T101"});
-									system("perl ".$templates_path."t101.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T101"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t101.pl $file");	
 								}
 							}
 							
@@ -1810,8 +1824,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_102_cell_3->Value);
 								my $value4 = clean_string($template_102_cell_4->Value);
 								if(($value1 eq "Day") and ($value2 eq "Hour") and ($value3 eq "Min") and ($value4 eq "Sec")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T102"});
-									system("perl ".$templates_path."t102.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T102"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t102.pl $file");	
 								}
 							}
 =begin COMMENTS							
@@ -1827,7 +1841,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_103_cell_3->Value);
 								my $value4 = clean_string($template_103_cell_4->Value);
 								if(($value1 eq "Nume interpret") and ($value2 eq "Titlul Piesei") and ($value3 eq "Durata (min)") and ($value4 eq "Casa de productie")){
-									system("perl ".$templates_path."t103.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t103.pl $file");	
 								}
 							}
 							
@@ -1843,7 +1857,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_104_cell_3->Value);
 								my $value4 = clean_string($template_104_cell_4->Value);
 								if(($value1 eq "Titlu piesa") and ($value2 eq "Artist") and ($value3 eq "Orchestra Formatie") and ($value4 eq "Album")){
-									system("perl ".$templates_path."t104.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t104.pl $file");	
 								}
 							}
 							
@@ -1859,7 +1873,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_105_cell_3->Value);
 								my $value4 = clean_string($template_105_cell_4->Value);
 								if(($value1 eq "Saptiu emisie") and ($value2 eq "Min") and ($value3 eq "Sec") and ($value4 eq "Cod inreg")){
-									system("perl ".$templates_path."t105.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t105.pl $file");	
 								}
 							}
 							
@@ -1875,7 +1889,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_106_cell_3->Value);
 								my $value4 = clean_string($template_106_cell_4->Value);
 								if(($value1 eq "DATA") and ($value2 eq "ORA DIFUZARE") and ($value3 eq "MINUTE") and ($value4 eq "SECUNDE")){
-									system("perl ".$templates_path."t106.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t106.pl $file");	
 								}
 							}
 							
@@ -1891,7 +1905,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_107_cell_3->Value);
 								my $value4 = clean_string($template_107_cell_4->Value);
 								if(($value1 eq "Nr. crt.") and ($value2 eq "Data difuzare") and ($value3 eq "Ora difuzare") and ($value4 eq "Minute difuzate")){
-									system("perl ".$templates_path."t107.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t107.pl $file");	
 								}
 							}
 							
@@ -1907,7 +1921,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_108_cell_3->Value);
 								my $value4 = clean_string($template_108_cell_4->Value);
 								if(($value1 eq "Gen piesa") and ($value2 eq "Autor") and ($value3 eq "Interpret") and ($value4 eq "Orchestra")){
-									system("perl ".$templates_path."t108.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t108.pl $file");	
 								}
 							}
 							
@@ -1923,7 +1937,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_109_cell_3->Value);
 								my $value4 = clean_string($template_109_cell_4->Value);
 								if(($value1 eq "Titlu") and ($value2 eq "Gen piesa") and ($value3 eq "Autor") and ($value4 eq "Interpret")){
-									system("perl ".$templates_path."t109.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t109.pl $file");	
 								}
 							}
 							
@@ -1939,7 +1953,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_110_cell_3->Value);
 								my $value4 = clean_string($template_110_cell_4->Value);
 								if(($value1 eq "denumire fonograma") and ($value2 eq "interpret fonograma") and ($value3 eq "difuzari/") and ($value4 eq "difuzare/")){
-									system("perl ".$templates_path."t110.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t110.pl $file");	
 								}
 							}
 						
@@ -1955,7 +1969,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_111_cell_3->Value);
 								my $value4 = clean_string($template_111_cell_4->Value);
 								if(($value1 eq "luna") and ($value2 eq "Radiodifuzor") and ($value3 eq "Titlu&Interpret") and ($value4 eq "Gen piesa")){
-									system("perl ".$templates_path."t111.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t111.pl $file");	
 								}
 							}
 							
@@ -1971,7 +1985,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_112_cell_3->Value);
 								my $value4 = clean_string($template_112_cell_4->Value);
 								if(($value1 eq "Artist") and ($value2 eq "Titlu") and ($value3 eq "Durata") and ($value4 eq "Difuzari")){
-									system("perl ".$templates_path."t112.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t112.pl $file");	
 								}
 							}
 
@@ -1987,7 +2001,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_113_cell_3->Value);
 								my $value4 = clean_string($template_113_cell_4->Value);
 								if(($value1 eq "Campaign") and ($value2 eq "Channel") and ($value3 eq "Date") and ($value4 eq "Start time")){
-									system("perl ".$templates_path."t113.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t113.pl $file");	
 								}
 							}
 =end COMMENTS
@@ -2004,8 +2018,8 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_114_cell_3->Value);
 								my $value4 = clean_string($template_114_cell_4->Value);
 								if(($value1 eq "Nr. crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Ora difuzarii") and ($value4 eq "Spatiu emisie")){
-									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "XLS", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T114"});
-									system("perl ".$templates_path."t114.pl $file");	
+									my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T114"});
+									system("perl /var/perl-scripts/PERL/UNART/templates/t114.pl $file");	
 								}
 							}
 =begin							
@@ -2021,7 +2035,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_115_cell_3->Value);
 								my $value4 = clean_string($template_115_cell_4->Value);
 								if(($value1 eq "Nr. crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Ora difuzarii") and ($value4 eq "Spatiu emisie")){
-									system("perl ".$templates_path."t115.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t115.pl $file");	
 								}
 							}
 							
@@ -2037,7 +2051,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_116_cell_3->Value);
 								my $value4 = clean_string($template_116_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Denumire opera muzicala") and ($value4 eq "Interpret")){
-									system("perl ".$templates_path."t116.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t116.pl $file");	
 								}
 							}
 							
@@ -2053,7 +2067,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_117_cell_3->Value);
 								my $value4 = clean_string($template_117_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Interpret") and ($value4 eq "Titlu")){
-									system("perl ".$templates_path."t117.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t117.pl $file");	
 								}
 							}
 							
@@ -2069,7 +2083,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_118_cell_3->Value);
 								my $value4 = clean_string($template_118_cell_4->Value);
 								if(($value1 eq "Executii") and ($value2 eq "Denumirea operelor muzicale difuzate in cadrul programului") and ($value3 eq "Autor muzica") and ($value4 eq "Interpret")){
-									system("perl ".$templates_path."t118.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t118.pl $file");	
 								}
 							}
 							
@@ -2085,7 +2099,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_119_cell_3->Value);
 								my $value4 = clean_string($template_119_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Sp. Emisie") and ($value4 eq "Titlu piesa")){
-									system("perl ".$templates_path."t119.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t119.pl $file");	
 								}
 							}
 							
@@ -2101,7 +2115,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_120_cell_3->Value);
 								my $value4 = clean_string($template_120_cell_4->Value);
 								if(($value1 eq "Nr. Crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Durata (min)") and ($value4 eq "Durata (sec)")){
-									system("perl ".$templates_path."t120.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t120.pl $file");	
 								}
 							}
 							
@@ -2117,7 +2131,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_121_cell_3->Value);
 								my $value4 = clean_string($template_121_cell_4->Value);
 								if(($value1 eq "Nr. Crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Minute") and ($value4 eq "Sec.")){
-									system("perl ".$templates_path."t121.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t121.pl $file");	
 								}
 							}
 							
@@ -2133,7 +2147,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_122_cell_3->Value);
 								my $value4 = clean_string($template_122_cell_4->Value);
 								if(($value1 eq "Nr. Crt.") and ($value2 eq "Data difuzarii") and ($value3 eq "Minute") and ($value4 eq "Secunde")){
-									system("perl ".$templates_path."t122.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t122.pl $file");	
 								}
 							}
 							
@@ -2149,7 +2163,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_123_cell_3->Value);
 								my $value4 = clean_string($template_123_cell_4->Value);
 								if(($value1 eq "Nr. Crt.") and ($value2 eq "Artist") and ($value3 eq "Titlu") and ($value4 eq "Minute")){
-									system("perl ".$templates_path."t123.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t123.pl $file");	
 								}
 							}
 							
@@ -2165,7 +2179,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_124_cell_3->Value);
 								my $value4 = clean_string($template_124_cell_4->Value);
 								if(($value1 eq "Interpret") and ($value2 eq "Titlu") and ($value3 eq "Gen piesa") and ($value4 eq "Orchestra")){
-									system("perl ".$templates_path."t124.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t124.pl $file");	
 								}
 							}
 							
@@ -2181,7 +2195,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_125_cell_3->Value);
 								my $value4 = clean_string($template_125_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Ora de difuzare") and ($value4 eq "Titlu piesa")){
-									system("perl ".$templates_path."t125.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t125.pl $file");	
 								}
 							}
 							
@@ -2197,7 +2211,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_126_cell_3->Value);
 								my $value4 = clean_string($template_126_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Sp.") and ($value4 eq "Titlu piesa")){
-									system("perl ".$templates_path."t126.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t126.pl $file");	
 								}
 							}
 							
@@ -2213,10 +2227,10 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_127_cell_3->Value);
 								my $value4 = clean_string($template_127_cell_4->Value);
 								if(($value1 eq "Nr.") and ($value2 eq "Emisiunea") and ($value3 eq "Durata") and ($value4 eq "Ziua difuzarii")){
-									system("perl ".$templates_path."t127.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t127.pl $file");	
 								}
 							}
-							 
+							
 							#TEMPLATE 128
 							my $template_128_cell_1 = $worksheet->get_cell(2, 0);
 							my $template_128_cell_2 = $worksheet->get_cell(2, 1);
@@ -2229,7 +2243,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_128_cell_3->Value);
 								my $value4 = clean_string($template_128_cell_4->Value);
 								if(($value1 eq "Nr  crt") and ($value2 eq "Data difuzarii") and ($value3 eq "Ora difuzarii") and ($value4 eq "Minute difuzate")){
-									system("perl ".$templates_path."t128.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t128.pl $file");	
 								}
 							}
 							
@@ -2245,7 +2259,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_129_cell_3->Value);
 								my $value4 = clean_string($template_129_cell_4->Value);
 								if(($value1 eq "DENUMIRE EMISIUNE") and ($value2 eq "Realizator") and ($value3 eq "DIFUZARE") and ($value4 eq "NR EDITII")){
-									system("perl ".$templates_path."t129.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t129.pl $file");	
 								}
 							}
 							
@@ -2261,7 +2275,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_130_cell_3->Value);
 								my $value4 = clean_string($template_130_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "PROMO Emisiune") and ($value3 eq "Sp. Emisie") and ($value4 eq "Titlu piesa")){
-									system("perl ".$templates_path."t130.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t130.pl $file");	
 								}
 							}
 							
@@ -2277,7 +2291,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_131_cell_3->Value);
 								my $value4 = clean_string($template_131_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "PROMO Emisiune") and ($value3 eq "Sp. Emisie") and ($value4 eq "Titlu piesa")){
-									system("perl ".$templates_path."t131.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t131.pl $file");	
 								}
 							}
 						
@@ -2293,7 +2307,7 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								#my $value3 = clean_string($template_132_cell_3->Value);
 								#my $value4 = clean_string($template_132_cell_4->Value);
 								#if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Sp. Emisie") and ($value4 eq "Titlu piesa")){
-									#system("perl ".$templates_path."t132.pl $file");	
+									#system("perl /var/perl-scripts/PERL/UNART/templates/t132.pl $file");	
 								#}
 							#}
 							
@@ -2309,12 +2323,11 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 								my $value3 = clean_string($template_133_cell_3->Value);
 								my $value4 = clean_string($template_133_cell_4->Value);
 								if(($value1 eq "Data") and ($value2 eq "Emisiune") and ($value3 eq "Sp. Emisie") and ($value4 eq "Titlu piesa")){
-									system("perl ".$templates_path."t133.pl $file");	
+									system("perl /var/perl-scripts/PERL/UNART/templates/t133.pl $file");	
 								}
 							}
 =end COMMENT
 =cut	
-
 							chomp($file);
 							my $old_path = abs_path($file);
 							my $new_path = abs_path($file);
@@ -2324,92 +2337,93 @@ my $timestamp = strftime("%Y-%m-%d", localtime);
 							move($old_path, $new_path);
 							unlink($old_path);
 						
-						}	# foreach						
-						}	#if file
+						}							
+						}	
 					}elsif($extension eq ".XLSX"){
 						#print $file,"\n";
 					}elsif($extension eq ".CSV"){
-						if (-e $file) {
-							open(FILE,$file);
-							if(tell(FILE) == -1 ){ 
-								my $old_path = abs_path($file);
-								my $new_path = abs_path($file);
-								$new_path =~ s/IMPORT/RESIDUUM/; #set new path (string replace)
-								#$new_path =~ s/xls/residuum/; #set new path (string replace)
-								my($filename_to_move, $directories_to_move) = fileparse($new_path); # get directories tree for new tree creation
-								make_path($directories_to_move);
-								move($old_path, $new_path);
-								unlink($old_path);
-								next; 
-							} #remove corrupted files
-							my $csv = Text::CSV->new();
+												if (-e $file) {
+						open(FILE,$file);
+						if(tell(FILE) == -1 ){ 
+							my $old_path = abs_path($file);
+							my $new_path = abs_path($file);
+							$new_path =~ s/IMPORT/RESIDUUM/; #set new path (string replace)
+							#$new_path =~ s/xls/residuum/; #set new path (string replace)
+							my($filename_to_move, $directories_to_move) = fileparse($new_path); # get directories tree for new tree creation
+							make_path($directories_to_move);
+							move($old_path, $new_path);
+							unlink($old_path);
+							next; 
+						} #remove corrupted files
+						my $csv = Text::CSV->new();
 
-						    open (CSV, "<", $file);
-						    my $row = 0;
-						    while (<CSV>) {
-						        $row += 1;      
-						            if ($csv->parse($_)) {
-						                my @columns = $csv->fields();
-						                my @splitted = split(';',$columns[0]);
-						                if($row == 1 and $columns[0] eq 'DateTime;;Artist;;;Title;;;Style;;;Category;;;Album;;;Publisher;;;PlayCount;;;Length;;;'){
-						                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "CSV", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T1CSV"});
-						                    system("perl ".$templates_path."t1csv.pl $file");   
-						                }				                
-						                if($row == 6 and $columns[0] eq 'DATA DIFUZARII;ORA DIFUZARII;MINUTE;SECUNDE;TITLU PIESA;AUTOR MUZICA;ARTIST;NR. DE ARTISTI;ALBUM;PRODUCATOR;TARA;ANUL INREGISTRARII'){
-						                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "CSV", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T2CSV"});
-						                    system("perl ".$templates_path."t2csv.pl $file"); 
-						                }
-						                if($row == 8 and $columns[0] eq 'DATA DIFUZARII;ORA DIFUZARII;MINUTE;SECUNDE;TITLU PIESA;AUTOR MUZICA;ARTIST;ORCHESTRA'){
-						                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "CSV", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T3CSV"});
-						                    system("perl ".$templates_path."t3csv.pl $file");     
-						                }
-						                if($row == 8 and $columns[0] eq 'Day;Hour;Min;Sec;Artist;Song;Producer;Music;Lyrics;Label;Country;No.;CREDIDAM;UPFR'){
-						                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "CSV", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T4CSV"});
-						                    system("perl ".$templates_path."t4csv.pl $file"); 
-						                }
-						                if($row == 8 and $columns[0] eq 'Day;Hour;Min;Sec;Artist;Song;Producer;Music;Lyrics;Label;Country;No.;CREDIDAM;UPFR;RDSInfo'){
-						                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "CSV", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T5CSV"});
-						                    system("perl ".$templates_path."t5csv.pl $file"); 
-						                }
-						                if($row == 8 and $columns[0] eq 'DATA DIFUZARII;ORA DIFUZARII;MINUTE;;;;;;;;;;;;'){
-						                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "CSV", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T6CSV"});
-						                    system("perl ".$templates_path."t6csv.pl $file"); 
-						                }
-						                if($row == 8 and $columns[0] eq 'Day;Hour;Min;Sec;Artist;Song;Producer;No.'){
-						                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "CSV", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T7CSV"});
-						                    system("perl ".$templates_path."t7csv.pl $file"); 
-						                }
-						                if($row == 8 and $columns[0] eq 'Day;Hour;Min;Sec;Artist;Song;Producer;Music;Lyrics;Label;Country;No.;CREDIDAM;UPFR;RDSInfo;Album;Year;Source'){
-						                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "CSV", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T8CSV"});
-						                    system("perl ".$templates_path."t8csv.pl $file"); 
-						                }
-						                if($row == 18 and $columns[0] eq 'DATA DIFUZARII;ORA DIFUZARII;MINUTE;SECUNDE;TITLU PIESA;AUTOR MUZICA;ARTIST;ORCHESTRA'){
-						                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "CSV", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T9CSV"});
-						                    system("perl ".$templates_path."t9csv.pl $file"); 
-						                }
-						                if($row == 19 and $columns[0] eq 'DATA DIFUZARII;ORA DIFUZARII;MINUTE;SECUNDE;TITLU PIESA;AUTOR MUZICA;ARTIST;ORCHESTRA'){
-						                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "CSV", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T10CSV"});
-						                    system("perl ".$templates_path."t10csv.pl $file"); 
-						                }
-						                if($row == 8 and $columns[0] eq 'NR.CRT.;DATA DIFUZARII;ORA DIFUZARII;MINUTE;SECUNDE;TITLU PIESA;AUTOR MUZICA;ARTIST;ORCHESTRA'){
-						                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "CSV", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T11CSV"});
-						                    system("perl ".$templates_path."t11csv.pl $file"); 
-						                }
-						                if($row == 6 and $columns[0] eq 'DATA DIFUZARII;ORA DIFUZARII;MINUTE;SECUNDE;TITLU PIESA;AUTOR MUZICA;ARTIST;ORCHESTRA'){
-						                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "TIMESTAMP" => $timestamp, "EXT" => "CSV", "FILE" => $file, "REAL_PATH" => realpath($file), "TEMPLATE" => "T12CSV"});
-						                    system("perl ".$templates_path."t12csv.pl $file"); 
-						            	}
-						            } else { 
-						                my $err = $csv->error_input;
-						                print abs_path($file)." Failed to parse line: $err";
-						            }
-						    } #while
-						close CSV;
-						} #if file
-					} # csv
-				} # if file	
-			} # foreach files
-	} #foreach folders
+					    open (CSV, "<", $file);
+					    my $row = 0;
+					    while (<CSV>) {
+					        $row += 1;      
+					            if ($csv->parse($_)) {
+					                my @columns = $csv->fields();
+					                my @splitted = split(';',@columns[0]);
+					                if($row == 1 and $columns[0] eq 'DateTime;;Artist;;;Title;;;Style;;;Category;;;Album;;;Publisher;;;PlayCount;;;Length;;;'){
+					                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T1CSV"});
+					                    system("perl /var/perl-scripts/PERL/UNART/templates/t1csv.pl $file");   
+					                }				                
+					                if($row == 6 and $columns[0] eq 'DATA DIFUZARII;ORA DIFUZARII;MINUTE;SECUNDE;TITLU PIESA;AUTOR MUZICA;ARTIST;NR. DE ARTISTI;ALBUM;PRODUCATOR;TARA;ANUL INREGISTRARII'){
+					                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T2CSV"});
+					                    system("perl /var/perl-scripts/PERL/UNART/templates/t2csv.pl $file"); 
+					                }
+					                if($row == 8 and $columns[0] eq 'DATA DIFUZARII;ORA DIFUZARII;MINUTE;SECUNDE;TITLU PIESA;AUTOR MUZICA;ARTIST;ORCHESTRA'){
+					                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T3CSV"});
+					                    system("perl /var/perl-scripts/PERL/UNART/templates/t3csv.pl $file");     
+					                }
+					                if($row == 8 and $columns[0] eq 'Day;Hour;Min;Sec;Artist;Song;Producer;Music;Lyrics;Label;Country;No.;CREDIDAM;UPFR'){
+					                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T4CSV"});
+					                    system("perl /var/perl-scripts/PERL/UNART/templates/t4csv.pl $file"); 
+					                }
+					                if($row == 8 and $columns[0] eq 'Day;Hour;Min;Sec;Artist;Song;Producer;Music;Lyrics;Label;Country;No.;CREDIDAM;UPFR;RDSInfo'){
+					                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T5CSV"});
+					                    system("perl /var/perl-scripts/PERL/UNART/templates/t5csv.pl $file"); 
+					                }
+					                if($row == 8 and $columns[0] eq 'DATA DIFUZARII;ORA DIFUZARII;MINUTE;;;;;;;;;;;;'){
+					                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T6CSV"});
+					                    system("perl /var/perl-scripts/PERL/UNART/templates/t6csv.pl $file"); 
+					                }
+					                if($row == 8 and $columns[0] eq 'Day;Hour;Min;Sec;Artist;Song;Producer;No.'){
+					                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T7CSV"});
+					                    system("perl /var/perl-scripts/PERL/UNART/templates/t7csv.pl $file"); 
+					                }
+					                if($row == 8 and $columns[0] eq 'Day;Hour;Min;Sec;Artist;Song;Producer;Music;Lyrics;Label;Country;No.;CREDIDAM;UPFR;RDSInfo;Album;Year;Source'){
+					                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T8CSV"});
+					                    system("perl /var/perl-scripts/PERL/UNART/templates/t8csv.pl $file"); 
+					                }
+					                if($row == 18 and $columns[0] eq 'DATA DIFUZARII;ORA DIFUZARII;MINUTE;SECUNDE;TITLU PIESA;AUTOR MUZICA;ARTIST;ORCHESTRA'){
+					                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T9CSV"});
+					                    system("perl /var/perl-scripts/PERL/UNART/templates/t9csv.pl $file"); 
+					                }
+					                if($row == 19 and $columns[0] eq 'DATA DIFUZARII;ORA DIFUZARII;MINUTE;SECUNDE;TITLU PIESA;AUTOR MUZICA;ARTIST;ORCHESTRA'){
+					                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T10CSV"});
+					                    system("perl /var/perl-scripts/PERL/UNART/templates/t10csv.pl $file"); 
+					                }
+					                if($row == 8 and $columns[0] eq 'NR.CRT.;DATA DIFUZARII;ORA DIFUZARII;MINUTE;SECUNDE;TITLU PIESA;AUTOR MUZICA;ARTIST;ORCHESTRA'){
+					                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T11CSV"});
+					                    system("perl /var/perl-scripts/PERL/UNART/templates/t11csv.pl $file"); 
+					                }
+					                if($row == 6 and $columns[0] eq 'DATA DIFUZARII;ORA DIFUZARII;MINUTE;SECUNDE;TITLU PIESA;AUTOR MUZICA;ARTIST;ORCHESTRA'){
+					                    my $insert = $mango->db('unart_parsing')->collection('matched_files')->insert({ "FILE" => $file, "real_path" => realpath($file), "template" => "T12CSV"});
+					                    system("perl /var/perl-scripts/PERL/UNART/templates/t12csv.pl $file"); 
+					            	}
+					            } else { 
+					                my $err = $csv->error_input;
+					                print "Failed to parse line: $err";
+					            }
+					        
+					        
+					}
+					close CSV;
+					}
+			}		
+		}
+}
 # trim string and diacritics removal subroutine
 sub clean_string($) {
 	my $string = shift;

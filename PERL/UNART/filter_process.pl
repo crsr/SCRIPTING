@@ -79,4 +79,4 @@ use autodie;
 #	After script is finished, call cleaning script
 #
 	#system("perl D:\\WORK\\REPOS\\PERL\\UNART\\delete_empty_folders.pl");
-	system("perl /var/perl-scripts/PERL/UNART/empty_folders_processing.pl");	
+	#system("perl /var/perl-scripts/PERL/UNART/empty_folders_processing.pl");	

@@ -1,6 +1,6 @@
 #
 #
-#	T52 template script
+#	T52 template script (IMPORT V2)
 # 	DO:
 # 	1. Match template
 # 	2. Parse file
@@ -14,6 +14,7 @@
 #
 my $start_run = time();
 my $env = 0;
+my $template = "T52";
 use strict;
 use warnings;
 use feature qw(say);
@@ -41,20 +42,8 @@ my $mango = Mango->new('mongodb://127.0.0.1:27017'); # DB connection
 #
 # Lists for search patterns
 #
-my @months = ("ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"); 
-my @years = ("2011", "2012", "2013");
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-    
+my @months = ("ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie", "ian", "feb", "mar", "apr", "mai", "iun", "iul", "aug", "sept", "oct", "noi", "dec", "sep", "nov"); 
+my @years = ("2011", "2012", "2013", "2014");
 
 #
 # Log file and structure
@@ -64,7 +53,7 @@ my $log_printing;
 my $full_path = "/var/www/html/LOGS/";
 my ( $logfile, $directories ) = fileparse $full_path;
 if ( !$logfile ) {
-    $logfile = "parser_T52_".$log_file_data.".log";
+    $logfile = "parser_".$template."_".$log_file_data.".log";
     $full_path = File::Spec->catfile( $full_path, $logfile );
 	if($env == 0){
 		open(STDOUT,'>>',$full_path) or die "Nu se poate creea fisierul pentru log!"; #open file for writing (append)
@@ -82,7 +71,7 @@ my $database_pwd = "unart";
 my $pg_connection = DBI->connect("dbi:Pg:dbname=$database_name;host=$database_host","$database_uname","$database_pwd");
 
 my $file = $ARGV[0];
-#my $file = "/var/www/html/IMPORT/ALEXANDRA_TOUR_SRL_HUNEDOARA_TV/TRIM_1/T52_PLAYLIST_IANUARIE_2012.XLS";
+#my $file = "/var/www/html/IMPORT/ALEXANDRA_TOUR_SRL_HUNEDOARA_TV/TRIM_1/T22_PLAYLIST_IANUARIE_2012.XLS";
 my @extensions = qw(.XLS .XLSX .CSV); #set allowed extensions for filter
 print STDOUT "START\n";
 print STDOUT "----------------- ".$log_data." -----------------\n";
@@ -185,18 +174,17 @@ print STDOUT "----------------- ".$log_data." -----------------\n";
 									
 										my $data_sheet_name = $data_sheet->{Name};
 										print STDOUT "Fisier: [$file] | Foaie: [$data_sheet_name]\n";
-										$sheet_name = undiacritic($data_sheet->{Name}); 
-
-												my $stmt = $pg_connection->prepare("INSERT INTO first_buffer2 (data_difuzare,emisiune,minute,secunde,opera,artist,template,luna,an,post,nr_difuzari) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
-												for my $row (6 .. $data_sheet->{MaxRow}) {
-													if($row != 6){
-														my $c1 = $data_sheet->get_cell($row, 0);#data
-														#my $c2 = $data_sheet->get_cell($row, 1);#emisiune
-														my $c3 = $data_sheet->get_cell($row, 5);#opera
-														my $c4 = $data_sheet->get_cell($row, 4);#artist
-														my $c5 = $data_sheet->get_cell($row, 2);#minute
-														my $c6 = $data_sheet->get_cell($row, 3);#secunde
-														my $c7 = $data_sheet->get_cell($row, 12);#nr difuzari
+										$sheet_name = undiacritic($data_sheet->{Name});
+										
+												for my $row (7 .. $data_sheet->{MaxRow}) {
+													if($row != 7){
+														#my $c1 = $data_sheet->get_cell($row, 0); next unless $c1; #data
+														#my $c2 = $data_sheet->get_cell($row, 2); next unless $c2; #emisiune
+														my $c3 = $data_sheet->get_cell($row, 3); next unless $c3; #opera
+														my $c4 = $data_sheet->get_cell($row, 2); next unless $c4; #artist
+														my $c5 = $data_sheet->get_cell($row, 0); next unless $c5; #minute
+														my $c6 = $data_sheet->get_cell($row, 1); next unless $c6; #secunde
+														my $c7 = $data_sheet->get_cell($row, 5); next unless $c7; #nr difuzari
 														my $c3string = $c3->value();
 														$c3string =~ s/.mpg//;
 														$c3string =~ s/. mpg//;
@@ -211,17 +199,16 @@ print STDOUT "----------------- ".$log_data." -----------------\n";
 														$c3string =~ s/.m2p//;
 														$c3string =~ s/"//;
 														$c3string =~ s/.rr//;
-														$c3string =~ s/~/'/;
-														if($c1->value() eq "" and $c3->value() eq "" and $c4->value() eq "" and $c5->value() eq "" and $c6->value() eq "" and $c7->value() eq "") { next; } #remove empty data
-														
-														$stmt->execute( clean_string($c1->value()), "null", clean_string($c5->value()), clean_string($c6->value()), clean_string($c3string), clean_string($c4->value()), "T52", $month_founded[0], $year_founded[0], $channel_founded[0], clean_string($c7->value()));											
+														if($c1->value() eq "" and $c2->value() eq "" and $c3->value() eq "" and $c4->value() eq "" and $c5->value() eq "" and $c6->value() eq "" and $c7->value() eq "") { next; } #remove empty data
+																
+														my $insert = $mango->db('unart_parsing')->collection('parsed')->insert({ "DATA_DIFUZARE" => $month_founded[0], "EMISIUNE" => $channel_founded[0], "MINUTE" => clean_string($c5->value()), "SECUNDE" => clean_string($c6->value()), "OPERA" => clean_string($c3string), "ARTIST" => clean_string($c4->value()), "NR_DIFUZARI" => clean_string($c7->value()), "LUNA" => $month_founded[0], "AN" => $year_founded[0], "POST" => $channel_founded[0], "TEMPLATE" => $template, "STATUS" => "0"});				
 													}
 												}									
 									} 
 									
 									chomp($file);
 									my $old_path = abs_path($file);
-									my $new_path = abs_path('T52_'.$file);
+									my $new_path = abs_path($template.'_'.$file);
 									$new_path =~ s/IMPORT/IMPORTED/; #set new path (string replace)
 									my($filename_to_move, $directories_to_move) = fileparse($new_path); # get directories tree for new tree creation
 									make_path($directories_to_move);
