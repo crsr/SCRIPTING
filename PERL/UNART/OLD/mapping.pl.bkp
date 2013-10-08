@@ -1,0 +1,75 @@
+use strict;
+use warnings;
+#use Mango;
+use DBI;
+use POSIX qw/strftime/;
+use File::Basename;
+use File::Spec;
+use File::Path qw( make_path );
+#use MongoDB::Examples;
+use MongoDB::MongoClient;
+use MongoDB::Database;
+my $client = MongoDB::MongoClient=>new(host=>'127.0.0.1:27017');
+
+my $env = 0;
+my $log_data = strftime("%Y-%m-%d %H-%M-%S", localtime);
+my $log_file_data = strftime("%Y-%m-%d", localtime);
+
+
+#dbs connections
+#my $mango = Mango->new("mongodb://127.0.0.1:27017");
+
+# my $pg_connection;
+my $data_base_name = "unart";
+my $data_base_host = "127.0.0.1";
+my $data_base_uname = "unart";
+my $data_base_pwd = "unart";
+my $pg_connection = DBI->connect("dbi:Pg:dbname=$data_base_name;host=$data_base_host", "$data_base_uname", "$data_base_pwd");
+my $search_matches;
+my $matches;
+my $works = $pg_connection->prepare("SELECT * FROM public.artists");
+$works->execute();
+#$search_matches = $mango->get_collection( 'parsed' )->find( {name => qr/^Ioana/ } );
+		#$search_matches = $mango->db('unart_parsing')->collection('parsed')->find({VALOARE=>gr/Ioana/})->count();
+	
+#print $search_matches; 
+#
+
+die();
+my @rows = map {$_->[1]} @{$works->fetchall_arrayref};
+	foreach my $r(@rows){
+		#print $r,"\n";
+		}
+	print $matches;
+
+
+	 die();
+
+my $full_path = "/var/www/html/LOGS/";
+my ( $logfile, $directories ) = fileparse $full_path;
+if ( !$logfile ) {
+    $logfile = "mapping_".$log_file_data.".log";
+        $full_path = File::Spec->catfile( $full_path, $logfile );
+        	if($env == 0){
+        		open(STDOUT,'>>',$full_path) or die "Nu se poate creea fisierul pentru log!"; #open file for writing (append)
+        	}
+}
+
+if ( !-d $directories ) {
+    make_path $directories or die "Nu se poate creea structura";
+}
+
+#	my $count_empty_records = $mango->db('unart_parsing')->collection('parsed')->find({"VALOARE" => ""})->count();
+
+	# check if are empty records in database. 
+	if($count_empty_records != 0){
+#		my $delete_empty_records = $mango->db('unart_parsing')->collection('parsed')->remove({"VALOARE" => ""});
+		if($count_empty_records == 1){
+			print STDOUT "S-a sters ".$count_empty_records." inregistrare goala\n";
+		} else {
+			print STDOUT "S-au sters ".$count_empty_records." inregistrari goale\n";
+		}
+		print STDOUT "Baza de date curatata! Incepem procesul de sincronizare automata\n";
+	} else {
+		print STDOUT "Nu s-au gasit inregistrari goale. Incepem procesul de sincronizare automata\n";
+	}															

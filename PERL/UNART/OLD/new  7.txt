@@ -1,0 +1,25 @@
+my($count_row, $count_column, $data_sheet, $cell, $sheet_name); # set variables for parsing
+									foreach my $data_sheet (@{$workbook->{Worksheet}}) {
+										my $data_sheet_name = $data_sheet->{Name};
+										$sheet_name = undiacritic($data_sheet->{Name});
+										for(my $count_row = $data_sheet->{MinRow} ; 	
+											defined $data_sheet->{MaxRow} && $count_row <= $data_sheet->{MaxRow} ; $count_row++) {
+												for(my $count_column = $data_sheet->{MinCol} ;
+													defined $data_sheet->{MaxCol} && $count_column <= $data_sheet->{MaxCol} ; $count_column++) {
+														$cell = $data_sheet->{Cells}[$count_row][$count_column]; # set cell value;
+													
+														if($cell) { 
+															my $cell_value = $cell->Value;
+															
+															if($cell_value eq 'Nr. crt.' and $count_column == 0) {
+																next $cell_value;
+																print $cell_value,' ',$count_column,' ',$count_row,"\n";
+																
+																print STDOUT "Fisier ".$file;
+																	#system("perl /var/perl-scripts/PERL/UNART/templates/t1.pl $file");
+																print STDOUT " -> T1\n";
+															} 							
+														}
+													}
+											}								
+									} 

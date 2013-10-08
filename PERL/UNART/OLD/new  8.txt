@@ -1,0 +1,6 @@
+if($cell) { 
+															my $cell_value = $cell->Value;														
+															if($cell_value eq 'Nr. crt.' and $count_column == 0) {
+																
+															} 							
+														}

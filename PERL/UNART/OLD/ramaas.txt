@@ -1,0 +1,257 @@
+if (($cell->Value eq 'Data' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'Emisiune' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'Titlu' and $count_column == 3 and $count_row == 0) and ($cell->Value eq 'Interpret' and $count_column == 5 and $count_row == 0) and ($cell->Value eq 'Nr difuzari' and $count_column == 8 and $count_row == 0) and ($cell->Value eq 'Min' and $count_column == 9 and $count_row == 0) and ($cell->Value eq 'Sec' and $count_column == 10 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t36.pl $file");
+																print STDOUT " -> T36\n";
+															} elsif (($cell->Value eq 'Data' and $count_column == 1 and $count_row == 10) and ($cell->Value eq 'Emisiune' and $count_column == 2 and $count_row == 10) and ($cell->Value eq 'Titlu' and $count_column == 4 and $count_row == 10) and ($cell->Value eq 'Interpret' and $count_column == 6 and $count_row == 10) and ($cell->Value eq 'Nr.Difuzari' and $count_column == 12 and $count_row == 10) and ($cell->Value eq 'Minute' and $count_column == 13 and $count_row == 10) and ($cell->Value eq 'Secunde' and $count_column == 14 and $count_row == 10)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t37.pl $file");
+																print STDOUT " -> T37\n";
+															} elsif (($cell->Value eq 'DATA DIFUZARII' and $count_column == 0 and $count_row == 7) and ($cell->Value eq 'MINUTE' and $count_column == 2 and $count_row == 7) and ($cell->Value eq 'SECUNDE' and $count_column == 3 and $count_row == 7) and ($cell->Value eq 'TITLU PIESA' and $count_column == 4 and $count_row == 7) and ($cell->Value eq 'ARTIST' and $count_column == 6 and $count_row == 7)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t38.pl $file");
+																print STDOUT " -> T38\n";
+															} elsif (($cell->Value eq 'Nr. crt.' and $count_column == 2 and $count_row == 8) and ($cell->Value eq 'Data difuzarii' and $count_column == 3 and $count_row == 8) and ($cell->Value eq 'Minute difuzate' and $count_column == 6 and $count_row == 8) and ($cell->Value eq 'Secunde difuzate' and $count_column == 7 and $count_row == 8) and ($cell->Value eq 'Numar difuzari' and $count_column == 8 and $count_row == 8) and ($cell->Value eq 'Titlul piesa' and $count_column == 12 and $count_row == 8) and ($cell->Value eq 'Artist/Interpret' and $count_column == 21 and $count_row == 8)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t39.pl $file");
+																print STDOUT " -> T39\n";
+															} elsif (($cell->Value eq 'Data difuzarii' and $count_column == 0 and $count_row == 2) and ($cell->Value eq 'Nr minute difuzate' and $count_column == 2 and $count_row == 2) and ($cell->Value eq 'Nr secunde difuzate' and $count_column == 3 and $count_row == 2) and ($cell->Value eq 'Titlul piesei' and $count_column == 4 and $count_row == 2) and ($cell->Value eq 'Interpretul / Trupa' and $count_column == 5 and $count_row == 2)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t40.pl $file");
+																print STDOUT " -> T40\n";
+															} elsif (($cell->Value eq 'Data difuzarii' and $count_column == 0 and $count_row == 1) and ($cell->Value eq 'Nr minute difuzate' and $count_column == 2 and $count_row == 1) and ($cell->Value eq 'Nr secunde difuzate' and $count_column == 3 and $count_row == 1) and ($cell->Value eq 'Titlul piesei' and $count_column == 4 and $count_row == 1) and ($cell->Value eq 'Interpretul / Trupa' and $count_column == 5 and $count_row == 1)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t41.pl $file");
+																print STDOUT " -> T41\n";
+															} elsif (($cell->Value eq 'Interpret' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'Producator' and $count_column == 5 and $count_row == 0) and ($cell->Value eq 'Nr.Difuzari' and $count_column == 7 and $count_row == 0) and ($cell->Value eq 'Min.' and $count_column == 8 and $count_row == 0) and ($cell->Value eq 'Sec.' and $count_column == 9 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t42.pl $file");
+																print STDOUT " -> T42\n";
+															} elsif (($cell->Value eq 'NR CRT' and $count_column == 0 and $count_row == 8) and ($cell->Value eq 'DATA DIFUZARII' and $count_column == 1 and $count_row == 8) and ($cell->Value eq 'MINUTE' and $count_column == 3 and $count_row == 8) and ($cell->Value eq 'SECUNDE' and $count_column == 4 and $count_row == 8) and ($cell->Value eq 'TITLU PIESA' and $count_column == 5 and $count_row == 8) and ($cell->Value eq 'ARTIST' and $count_column == 7 and $count_row == 8)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t43.pl $file");
+																print STDOUT " -> T43\n";
+															} elsif (($cell->Value eq '' and $count_column == 0 and $count_row == 7) and ($cell->Value eq 'DATA DIFUZARII' and $count_column == 1 and $count_row == 7) and ($cell->Value eq 'MINUTE' and $count_column == 3 and $count_row == 7) and ($cell->Value eq 'SECUNDE' and $count_column == 4 and $count_row == 7) and ($cell->Value eq 'TITLU PIESA' and $count_column == 5 and $count_row == 7) and ($cell->Value eq 'ARTIST' and $count_column == 7 and $count_row == 7)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t44.pl $file");
+																print STDOUT " -> T44\n";
+															} elsif (($cell->Value eq 'DateTime' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'Artist' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'Title' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'PlayCount' and $count_column == 7 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t45.pl $file");
+																print STDOUT " -> T45\n";
+															} elsif (($cell->Value eq 'Data' and $count_column == 0 and $count_row == 7) and ($cell->Value eq 'EMISIUNE' and $count_column == 1 and $count_row == 7) and ($cell->Value eq 'Interpret' and $count_column == 3 and $count_row == 7) and ($cell->Value eq 'Titlu' and $count_column == 4 and $count_row == 7) and ($cell->Value eq 'NR. Difuzari' and $count_column == 11 and $count_row == 7) and ($cell->Value eq 'Minute' and $count_column == 12 and $count_row == 7) and ($cell->Value eq 'Secunde' and $count_column == 13 and $count_row == 7)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t46.pl $file");
+																print STDOUT " -> T46\n";
+															} elsif (($cell->Value eq 'DATA DIFUZARE' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'ORA DIFUZARE' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'ARTIST' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'PIESA' and $count_column == 3 and $count_row == 0) and ($cell->Value eq 'DURATA DIFUZARE' and $count_column == 4 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t47.pl $file");
+																print STDOUT " -> T47\n";
+															} elsif (($cell->Value eq 'Data' and $count_column == 0 and $count_row == 8) and ($cell->Value eq 'Emisiune' and $count_column == 1 and $count_row == 8) and ($cell->Value eq 'Interpret' and $count_column == 3 and $count_row == 8) and ($cell->Value eq 'Titlu' and $count_column == 4 and $count_row == 8) and ($cell->Value eq 'Min' and $count_column == 12 and $count_row == 8) and ($cell->Value eq 'Sec' and $count_column == 13 and $count_row == 8)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t48.pl $file");
+																print STDOUT " -> T48\n";
+															} elsif (($cell->Value eq 'Day' and $count_column == 0 and $count_row == 5) and ($cell->Value eq 'Min' and $count_column == 2 and $count_row == 5) and ($cell->Value eq 'Sec' and $count_column == 3 and $count_row == 5) and ($cell->Value eq 'Artist' and $count_column == 4 and $count_row == 5) and ($cell->Value eq 'Song' and $count_column == 5 and $count_row == 5)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t49.pl $file");
+																print STDOUT " -> T49\n";
+															} elsif (($cell->Value eq 'Nume Spot' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'Voce' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'Nume artist/compozitor piesa fundal' and $count_column == 4 and $count_row == 0) and ($cell->Value eq 'Timp (s)' and $count_column == 7 and $count_row == 0) and ($cell->Value eq 'Nr de difuzari' and $count_column == 8 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t50.pl $file");
+																print STDOUT " -> T50\n";
+															} elsif (($cell->Value eq 'NR. CRT' and $count_column == 0 and $count_row == 5) and ($cell->Value eq 'DATA DIFUZARE' and $count_column == 1 and $count_row == 5) and ($cell->Value eq 'MINUTE' and $count_column == 3 and $count_row == 5) and ($cell->Value eq 'SECUNDE' and $count_column == 4 and $count_row == 5) and ($cell->Value eq 'TITLU PIESA' and $count_column == 5 and $count_row == 5) and ($cell->Value eq 'ARTIST' and $count_column == 7 and $count_row == 5)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t51.pl $file");
+																print STDOUT " -> T51\n";
+															} elsif (($cell->Value eq 'Data dif.' and $count_column == 0 and $count_row == 6) and ($cell->Value eq 'Ora difuzare' and $count_column == 1 and $count_row == 6) and ($cell->Value eq 'Min.difuzate' and $count_column == 2 and $count_row == 6) and ($cell->Value eq 'Sec.difuzate' and $count_column == 3 and $count_row == 6) and ($cell->Value eq 'Interpret' and $count_column == 4 and $count_row == 6) and ($cell->Value eq 'Titlu piesa' and $count_column == 5 and $count_row == 6) and ($cell->Value eq 'Nr. Difuzari' and $count_column == 12 and $count_row == 6)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t52.pl $file");
+																print STDOUT " -> T52\n";
+															} elsif (($cell->Value eq 'Nr.crt' and $count_column == 0 and $count_row == 6) and ($cell->Value eq 'Data' and $count_column == 1 and $count_row == 6) and ($cell->Value eq 'Minute' and $count_column == 3 and $count_row == 6) and ($cell->Value eq 'Secunde' and $count_column == 4 and $count_row == 6) and ($cell->Value eq 'Artist' and $count_column == 5 and $count_row == 6) and ($cell->Value eq 'Piesa' and $count_column == 6 and $count_row == 6)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t53.pl $file");
+																print STDOUT " -> T53\n";
+															} elsif (($cell->Value eq 'Ziua' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'Numar Difuzari' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'Minute' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'Secunde' and $count_column == 3 and $count_row == 0) and ($cell->Value eq 'Artist' and $count_column == 4 and $count_row == 0) and ($cell->Value eq 'Titlu Piesa' and $count_column == 5 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t54.pl $file");
+																print STDOUT " -> T54\n";
+															} elsif (($cell->Value eq 'Zi' and $count_column == 0 and $count_row == 6) and ($cell->Value eq 'Luna' and $count_column == 1 and $count_row == 6) and ($cell->Value eq 'An' and $count_column == 2 and $count_row == 6) and ($cell->Value eq 'Ora' and $count_column == 3 and $count_row == 6) and ($cell->Value eq 'Min' and $count_column == 4 and $count_row == 6) and ($cell->Value eq 'Sec' and $count_column == 5 and $count_row == 6)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t55.pl $file");
+																print STDOUT " -> T55\n";
+															} elsif (($cell->Value eq 'Data difuzarii' and $count_column == 0 and $count_row == 14) and ($cell->Value eq 'Minute dif.' and $count_column == 1 and $count_row == 14) and ($cell->Value eq 'Secunde dif' and $count_column == 2 and $count_row == 14) and ($cell->Value eq ' Interpret' and $count_column == 3 and $count_row == 14) and ($cell->Value eq 'Titlu piesa' and $count_column == 4 and $count_row == 14) and ($cell->Value eq 'Compozitor' and $count_column == 5 and $count_row == 14)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t56.pl $file");
+																print STDOUT " -> T56\n";
+															} elsif (($cell->Value eq 'Ziua' and $count_column == 1 and $count_row == 1) and ($cell->Value eq 'Ora' and $count_column == 2 and $count_row == 1) and ($cell->Value eq 'Minute' and $count_column == 3 and $count_row == 1) and ($cell->Value eq 'Secunde' and $count_column == 4 and $count_row == 1) and ($cell->Value eq 'Artist' and $count_column == 5 and $count_row == 1) and ($cell->Value eq 'Titlu piesa' and $count_column == 6 and $count_row == 1)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t57.pl $file");
+																print STDOUT " -> T57\n";
+															} elsif (($cell->Value eq 'Post TV/Radio' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'Emisiune' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'Titlu opera muzicala' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'Durata minute, secunde' and $count_column == 3 and $count_row == 0) and ($cell->Value eq 'Autor muzica' and $count_column == 5 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t58.pl $file");
+																print STDOUT " -> T58\n";
+															} elsif (($cell->Value eq 'Nr crt' and $count_column == 0 and $count_row == 13) and ($cell->Value eq 'DATA DIFUZARII' and $count_column == 1 and $count_row == 13) and ($cell->Value eq 'ORA DIFUZARII' and $count_column == 2 and $count_row == 13) and ($cell->Value eq 'MINUTE' and $count_column == 3 and $count_row == 13) and ($cell->Value eq 'SECUNDE' and $count_column == 4 and $count_row == 13) and ($cell->Value eq 'TITLU PIESA' and $count_column == 5 and $count_row == 13)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t59.pl $file");
+																print STDOUT " -> T59\n";
+															} elsif (($cell->Value eq 'Nr' and $count_column == 0 and $count_row == 9) and ($cell->Value eq 'DATA DIFUZARII' and $count_column == 1 and $count_row == 9) and ($cell->Value eq 'ORA DIFUZARII' and $count_column == 2 and $count_row == 9) and ($cell->Value eq 'MINUTE' and $count_column == 3 and $count_row == 9) and ($cell->Value eq 'SECUNDE' and $count_column == 4 and $count_row == 9) and ($cell->Value eq 'TITLU PIESA' and $count_column == 5 and $count_row == 9)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t60.pl $file");
+																print STDOUT " -> T60\n";
+															}  elsif (($cell->Value eq 'Nr crt' and $count_column == 0 and $count_row == 7) and ($cell->Value eq 'Data' and $count_column == 1 and $count_row == 7) and ($cell->Value eq 'Min' and $count_column == 3 and $count_row == 7) and ($cell->Value eq 'Sec' and $count_column == 4 and $count_row == 7) and ($cell->Value eq 'Artist' and $count_column == 5 and $count_row == 7) and ($cell->Value eq 'Piesa' and $count_column == 6 and $count_row == 7)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t61.pl $file");
+																print STDOUT " -> T61\n";
+															} elsif (($cell->Value eq 'Nr crt' and $count_column == 0 and $count_row == 8) and ($cell->Value eq ' Data difuzãrii ' and $count_column == 1 and $count_row == 8) and ($cell->Value eq ' Ora difuzãrii ' and $count_column == 2 and $count_row == 8) and ($cell->Value eq ' Minute difuzate ' and $count_column == 3 and $count_row == 8) and ($cell->Value eq ' Secunde difuzate ' and $count_column == 4 and $count_row == 8) and ($cell->Value eq ' Titlul piesei ' and $count_column == 5 and $count_row == 8)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t62.pl $file");
+																print STDOUT " -> T62\n";
+															} elsif (($cell->Value eq 'Date' and $count_column == 0 and $count_row == 5) and ($cell->Value eq 'Hour' and $count_column == 1 and $count_row == 5) and ($cell->Value eq 'Minutes' and $count_column == 2 and $count_row == 5) and ($cell->Value eq 'Seconds' and $count_column == 3 and $count_row == 5) and ($cell->Value eq 'Song' and ($count_column == 4 or $count_column == 5) and $count_row == 5)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t63.pl $file");
+																print STDOUT " -> T63\n";
+															} elsif (($cell->Value eq 'Date' and $count_column == 0 and $count_row == 3) and ($cell->Value eq 'Hour' and $count_column == 1 and $count_row == 3) and ($cell->Value eq 'Minutes' and $count_column == 2 and $count_row == 3) and ($cell->Value eq 'Seconds' and $count_column == 3 and $count_row == 3) and ($cell->Value eq 'Song' and $count_column == 4 and $count_row == 3)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t64.pl $file");
+																print STDOUT " -> T64\n";
+															} elsif (($cell->Value eq 'Nr Crt' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'Data Difuzarii' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'Ora Difuzarii' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'Minute Difuzate' and $count_column == 3 and $count_row == 0) and ($cell->Value eq 'Secunde Difuzate' and $count_column == 4 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t65.pl $file");
+																print STDOUT " -> T65\n";
+															} elsif (($cell->Value eq 'Ziua' and $count_column == 1 and $count_row == 3) and ($cell->Value eq 'Ora Dif.' and $count_column == 2 and $count_row == 3) and ($cell->Value eq 'Titlu Spot' and $count_column == 3 and $count_row == 3)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t66.pl $file");
+																print STDOUT " -> T66\n";
+															} elsif (($cell->Value eq 'NrCrt' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'DataDifuzarii' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'OraDifuzarii' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'MinuteDifuzate' and $count_column == 3 and $count_row == 0) and ($cell->Value eq 'SecundeDifuzate' and $count_column == 4 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t67.pl $file");
+																print STDOUT " -> T67\n";
+															} elsif (($cell->Value eq 'Ziua' and $count_column == 0 and $count_row == 1) and ($cell->Value eq 'Ora sau Spaţiu orar' and $count_column == 1 and $count_row == 1) and ($cell->Value eq 'Minute' and $count_column == 2 and $count_row == 1) and ($cell->Value eq 'Secunde' and $count_column == 3 and $count_row == 1) and ($cell->Value eq 'Artist' and $count_column == 4 and $count_row == 1)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t68.pl $file");
+																print STDOUT " -> T68\n";
+															} elsif (($cell->Value eq 'DATA DIFUZARII' and $count_column == 0 and $count_row == 7) and ($cell->Value eq 'ORA DIFUZARII' and $count_column == 1 and $count_row == 7) and ($cell->Value eq 'MINUTE' and $count_column == 2 and $count_row == 7) and ($cell->Value eq 'SECUNDE' and $count_column == 3 and $count_row == 7) and ($cell->Value eq 'TITLU PIESA' and $count_column == 4 and $count_row == 7)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t69.pl $file");
+																print STDOUT " -> T69\n";
+															} elsif (($cell->Value eq 'DATA DIFUZARII' and $count_column == 0 and $count_row == 7) and ($cell->Value eq 'POST RADIO' and $count_column == 1 and $count_row == 7) and ($cell->Value eq 'TITLU OPERA MUZICALA' and $count_column == 2 and $count_row == 7) and ($cell->Value eq 'EMISIUNE' and $count_column == 3 and $count_row == 7) and ($cell->Value eq 'SPATIU EMISIUNE' and $count_column == 4 and $count_row == 7)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t70.pl $file");
+																print STDOUT " -> T70\n";
+															} elsif (($cell->Value eq 'DATA' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'ORA' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'DURATA' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'INTERPRET' and $count_column == 3 and $count_row == 0) and ($cell->Value eq 'MELODIE' and $count_column == 4 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t71.pl $file");
+																print STDOUT " -> T71\n";
+															} elsif (($cell->Value eq 'Day' and $count_column == 0 and $count_row == 7) and ($cell->Value eq 'Min' and $count_column == 2 and $count_row == 7) and ($cell->Value eq 'Sec' and $count_column == 3 and $count_row == 7) and ($cell->Value eq 'Artist' and $count_column == 4 and $count_row == 7) and ($cell->Value eq 'Song' and $count_column == 5 and $count_row == 7)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t72.pl $file");
+																print STDOUT " -> T72\n";
+															} elsif (($cell->Value eq 'nr.crt' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'firma/campanie' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'artist/titlu' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'durata spot ' and $count_column == 3 and $count_row == 0) and ($cell->Value eq 'nr difuzari ' and $count_column == 4 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t73.pl $file");
+																print STDOUT " -> T73\n";
+															} elsif (($cell->Value eq 'data' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'ora' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'durata' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'interpret + titlu' and $count_column == 3 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t74.pl $file");
+																print STDOUT " -> T74\n";
+															} elsif (($cell->Value eq 'Num' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'Vox1' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'Vox2' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'Id' and $count_column == 3 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t75.pl $file");
+																print STDOUT " -> T75\n";
+															} elsif (($cell->Value eq 'Nr crt.' and $count_column == 0 and $count_row == 10) and ($cell->Value eq 'Data' and $count_column == 1 and $count_row == 10) and ($cell->Value eq 'Spatiu emisie' and $count_column == 2 and $count_row == 10) and ($cell->Value eq 'Minute' and $count_column == 3 and $count_row == 10)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t76.pl $file");
+																print STDOUT " -> T76\n";
+															} elsif (($cell->Value eq 'Data Difuzare' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'Ora Difuzare' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'Minute Difuzate' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'Secunde Difuzate' and $count_column == 3 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t77.pl $file");
+																print STDOUT " -> T77\n";
+															} elsif (($cell->Value eq 'Data Difuzare' and $count_column == 0 and $count_row == 15) and ($cell->Value eq 'Ora Difuzare' and $count_column == 1 and $count_row == 15) and ($cell->Value eq 'Minute Difuzate' and $count_column == 2 and $count_row == 15) and ($cell->Value eq 'Sec. Dif.' and $count_column == 3 and $count_row == 15)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t78.pl $file");
+																print STDOUT " -> T78\n";
+															} elsif (($cell->Value eq 'TITLU ' and $count_column == 1 and $count_row == 4) and ($cell->Value eq 'COMPOZITOR / TEXTIER' and $count_column == 2 and $count_row == 4) and ($cell->Value eq 'ARTIST' and $count_column == 3 and $count_row == 4) and ($cell->Value eq 'LABEL' and $count_column == 4 and $count_row == 4)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t79.pl $file");
+																print STDOUT " -> T79\n";
+															} elsif (($cell->Value eq 'Data' and $count_column == 0 and $count_row == 13) and ($cell->Value eq 'Emisiune' and $count_column == 1 and $count_row == 13) and ($cell->Value eq 'Interpret' and $count_column == 2 and $count_row == 13) and ($cell->Value eq 'Titlu' and $count_column == 3 and $count_row == 13)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t80.pl $file");
+																print STDOUT " -> T80\n";
+															} elsif (($cell->Value eq 'Data difuzarii' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'Ora difuzarii' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'Minute difuzate' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'Secunde difuzate' and $count_column == 3 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t81.pl $file");
+																print STDOUT " -> T81\n";
+															} elsif (($cell->Value eq 'No' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'Data' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'Durata difuzarii (sec)' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'title' and $count_column == 3 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t82.pl $file");
+																print STDOUT " -> T82\n";
+															} elsif (($cell->Value eq 'No' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'Data' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'Durata' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'Title' and $count_column == 3 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t83.pl $file");
+																print STDOUT " -> T83\n";
+															} elsif (($cell->Value eq 'Titlu' and $count_column == 0 and $count_row == 1) and ($cell->Value eq 'Minute' and $count_column == 1 and $count_row == 1) and ($cell->Value eq 'Secunde' and $count_column == 2 and $count_row == 1) and ($cell->Value eq 'Difuzari' and $count_column == 3 and $count_row == 1)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t84.pl $file");
+																print STDOUT " -> T84\n";
+															} elsif (($cell->Value eq 'Artist / Grup' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'Melodie' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'tara' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'Min.' and $count_column == 3 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t85.pl $file");
+																print STDOUT " -> T85\n";
+															} elsif (($cell->Value eq 'NR. CRT.' and $count_column == 0 and $count_row == 5) and ($cell->Value eq 'DATA DIFUZARII' and $count_column == 1 and $count_row == 5) and ($cell->Value eq 'ORA DIFUZARII' and $count_column == 2 and $count_row == 5) and ($cell->Value eq 'MINUTE' and $count_column == 3 and $count_row == 5)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t86.pl $file");
+																print STDOUT " -> T86\n";
+															} elsif (($cell->Value eq 'Nr. Crt.' and $count_column == 0 and $count_row == 8) and ($cell->Value eq 'Emisiune' and $count_column == 1 and $count_row == 8) and ($cell->Value eq 'Spatiu emisie' and $count_column == 2 and $count_row == 8) and ($cell->Value eq 'Titlu' and $count_column == 3 and $count_row == 8)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t87.pl $file");
+																print STDOUT " -> T87\n";
+															} elsif (($cell->Value eq 'DATA DIFUZARII' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'NUMELE EMISIUNII' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'ORA DIFUZARII' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'MINUTE DIFUZATE' and $count_column == 3 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t88.pl $file");
+																print STDOUT " -> T88\n";
+															} elsif (($cell->Value eq 'Nr crt' and $count_column == 0 and $count_row == 7) and ($cell->Value eq ' Data difuzãrii ' and $count_column == 1 and $count_row == 7) and ($cell->Value eq ' Ora difuzãrii ' and $count_column == 2 and $count_row == 7) and ($cell->Value eq ' Minute difuzate ' and $count_column == 3 and $count_row == 7) and ($cell->Value eq ' Secunde difuzate ' and $count_column == 4 and $count_row == 7) and ($cell->Value eq ' Titlul piesei ' and $count_column == 5 and $count_row == 7)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t89.pl $file");
+																print STDOUT " -> T90\n";
+															} elsif (($cell->Value eq 'MELODIE - INTERPRET' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'DURATA' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'NR. DIFUZARI' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'MINUTAJ' and $count_column == 3 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t91.pl $file");
+																print STDOUT " -> T91\n";
+															} elsif (($cell->Value eq 'Nr. Crt.' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'Per difuzarii' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'Titlul melodiei' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'Cantaret' and $count_column == 3 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t92.pl $file");
+																print STDOUT " -> T92\n";
+															} elsif (($cell->Value eq 'Data difuzarii' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'Ora difuzarii' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'Min.' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'Sec.' and $count_column == 3 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t93.pl $file");
+																print STDOUT " -> T93\n";
+															} elsif (($cell->Value eq 'Nr. Crt.' and $count_column == 0 and $count_row == 0) and ($cell->Value eq 'Data difuzarii' and $count_column == 1 and $count_row == 0) and ($cell->Value eq 'Ora difuzarii' and $count_column == 2 and $count_row == 0) and ($cell->Value eq 'Minute difuzate' and $count_column == 3 and $count_row == 0)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t94.pl $file");
+																print STDOUT " -> T94\n";
+															} elsif (($cell->Value eq 'Ziua' and $count_column == 0 and $count_row == 10) and ($cell->Value eq 'Spaţiu orar' and $count_column == 1 and $count_row == 10) and ($cell->Value eq 'Min.' and $count_column == 2 and $count_row == 10) and ($cell->Value eq 'Sec.' and $count_column == 3 and $count_row == 10)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t95.pl $file");
+																print STDOUT " -> T95\n";
+															} elsif (($cell->Value eq 'Data' and $count_column == 0 and $count_row == 8) and ($cell->Value eq 'Interval orar' and $count_column == 1 and $count_row == 8) and ($cell->Value eq 'Emisiune' and $count_column == 2 and $count_row == 8) and ($cell->Value eq 'Interpret' and $count_column == 3 and $count_row == 8)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t96.pl $file");
+																print STDOUT " -> T96\n";
+															} elsif (($cell->Value eq 'Nr.crt.' and $count_column == 0 and $count_row == 15) and ($cell->Value eq 'Data radiodifuzarii' and $count_column == 1 and $count_row == 15) and ($cell->Value eq 'Ora ' and $count_column == 2 and $count_row == 15) and ($cell->Value eq 'Durata film (Secunde)' and $count_column == 3 and $count_row == 15)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t97.pl $file");
+																print STDOUT " -> T97\n";
+															} elsif (($cell->Value eq 'Nr.crt.' and $count_column == 0 and $count_row == 13) and ($cell->Value eq 'Data radiodifuzarii' and $count_column == 1 and $count_row == 13) and ($cell->Value eq 'Ora ' and $count_column == 2 and $count_row == 13) and ($cell->Value eq 'Durata film (Secunde)' and $count_column == 3 and $count_row == 13)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t98.pl $file");
+																print STDOUT " -> T98\n";
+															} elsif (($cell->Value eq 'Nr.crt.' and $count_column == 0 and $count_row == 12) and ($cell->Value eq 'Data radiodifuzarii' and $count_column == 1 and $count_row == 12) and ($cell->Value eq 'Ora ' and $count_column == 2 and $count_row == 12) and ($cell->Value eq 'Durata film (Secunde)' and $count_column == 3 and $count_row == 12)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t99.pl $file");
+																print STDOUT " -> T99\n";
+															} elsif (($cell->Value eq 'Nr.crt.' and $count_column == 0 and $count_row == 10) and ($cell->Value eq 'Data radiodifuzarii' and $count_column == 1 and $count_row == 10) and ($cell->Value eq 'Ora ' and $count_column == 2 and $count_row == 10) and ($cell->Value eq 'Durata film (Secunde)' and $count_column == 3 and $count_row == 10)){
+																print STDOUT "Fisier ".$file;
+																	system("perl /var/perl-scripts/PERL/UNART/templates/t100.pl $file");
+																print STDOUT " -> T100\n";
+															}

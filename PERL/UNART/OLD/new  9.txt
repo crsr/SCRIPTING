@@ -1,0 +1,22 @@
+foreach my $data_sheet (@{$workbook->{Worksheet}}) {
+										for(my $count_row = $data_sheet->{MinRow} ; 	
+											defined $data_sheet->{MaxRow} && $count_row <= $data_sheet->{MaxRow} ; $count_row++) {
+												for(my $count_column = $data_sheet->{MinCol} ;
+													defined $data_sheet->{MaxCol} && $count_column <= $data_sheet->{MaxCol} ; $count_column++) {
+														my $template1_0 = $data_sheet->{Cells}[0][0];
+														my $template1_1 = $data_sheet->{Cells}[0][1];
+														my $template1_2 = $data_sheet->{Cells}[0][2];
+														my $template1_3 = $data_sheet->{Cells}[0][3];
+														if($template1_0){
+															print $template1_0->Value,"\n";
+															my $template1_cell_value1 = $template1_0->Value;
+															my $template1_cell_value2 = $template1_1->Value;
+															my $template1_cell_value3 = $template1_2->Value;
+															my $template1_cell_value4 = $template1_3->Value;
+																if($template1_cell_value1 eq "Nr. crt." and $template1_cell_value2 eq "Data difuzarii" and $template1_cell_value3 eq "Emisiune" and $template1_cell_value4 eq "Min."){								
+																	#system("perl /var/perl-scripts/PERL/UNART/templates/t1.pl $file");															
+																}				
+														}
+													}
+											}								
+									} 
