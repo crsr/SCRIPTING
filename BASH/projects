@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#SOURCE_DIR=/var/www/html/project/
+rsync -azC --force --delete --dry-run --progress --exclude-from=config/rsync_exclude.txt -e "ssh -p31322" ./ root@localhost:/opt/project/
+
+
+echo "Synchronizing files"
+rsync -azC --force --delete --progress --exclude-from=config/rsync_exclude.txt -e "ssh -p31322" ./ root@localhost:/opt/project/
+
+echo "Setting ownership and clearing the cache"
+ssh -t -p31322 root@localhost 'chown -R root:apache /opt/project/; cd /opt/project; ./symfony cc'
